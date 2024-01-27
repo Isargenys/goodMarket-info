@@ -1,0 +1,30 @@
+nav{
+    background-color: #ffd54f !important;
+}
+.btn-contacto{
+    background-color: #d1ccc8;
+}
+aside{
+    background-color: #ffd54f !important;
+
+}
+
+.parrafo{
+    color: #4D4637;
+}
+h1{
+    color: #4D4637;
+    font-weight: 800;
+}
+.tituloSecun{
+    color: #4D4637;
+}
+p{
+    color:#B3AA99;
+}
+
+.imagenCell{
+    transform: skewY(10deg);
+}
+.descarga{
+    background-image: linear-gradient(to right top, #f9b12b, #f7b551, #f4b96f, #edbe8a, #e4c4a5, #e3c1a2, #e1bd9e, #e0ba9b, #e8ac7a, #ee9e5a, #f39037, #f68000);}
