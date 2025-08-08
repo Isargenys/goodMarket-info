@@ -1,12 +1,47 @@
+
+/* body{
+        background-image: url('assets/SI.png'); 
+        background-size: cover;     
+        background-position: center;  
+        background-repeat: no-repeat; 
+        height: 100%;    
+} */
+
 nav{
-    background-color: #ffd54f !important;
+    background-color: rgba(165, 173, 182, 0.4) !important; /* Azul Bootstrap con 40% transparencia */
+    transition: background-color 0.3s ease;
+        height: 100px;
+    margin-bottom: 2%;
 }
+nav img{
+    width: 183px;
+}
+
+.masthead, .imagenP{
+    background-image: linear-gradient(
+        rgba(0, 0, 0, 0.5), 
+        rgba(0, 0, 0, 0.5)
+      ), url("assets/img/morena.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      min-height: 100vh; /* cubrir siempre toda la pantalla */
+      padding-top: 80px; /* espacio para navbar fijo */
+      display: flex;
+      align-items: center;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+
 .btn-contacto{
     background-color: #4D4637;
     color: #fff;
 }
 aside{
-    background-color: #ffd54f !important;
+    /* background-color: #ffd54f !important; */
 
 }
 
@@ -28,7 +63,7 @@ p{
     transform: skewY(10deg);
 }
 .descarga{
-    background-color: #ffd54f !important;
+    /* background-color: #ffd54f !important; */
 }
 
 .customTitle { font-size: 26px; }
