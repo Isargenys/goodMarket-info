@@ -13,6 +13,9 @@ nav{
         height: 100px;
     margin-bottom: 2%;
 }
+.navScroll{
+    background-color:#317039 !important ;
+}
 nav img{
     width: 183px;
 }
@@ -60,10 +63,14 @@ p{
 }
 
 .imagenCell{
-    transform: skewY(10deg);
+    transform: scale;
 }
 .descarga{
     /* background-color: #ffd54f !important; */
 }
 
 .customTitle { font-size: 26px; }
+
+#navbarResponsive ul, li a {
+    color: #f8edd9 !important;
+}

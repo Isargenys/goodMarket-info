@@ -31,4 +31,14 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     });
 
+    const navbar = document.getElementById('mainNav');
+    window.addEventListener('scroll',function(){
+        if (window.scrollY > 600){
+            navbar.classList.add('navScroll')
+        }
+        else{
+            navbar.classList.remove('navScroll')
+   
+        }
+    })
 });
