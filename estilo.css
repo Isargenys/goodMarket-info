@@ -41,8 +41,15 @@ html, body {
 
 .btn-contacto{
     background-color: #4D4637;
-    color: #fff;
+    color:#f8edd9;
 }
+.btn-contacto:hover{
+    color: #f8edd9;
+    border: 2px solid #f2c83a;
+
+    /* background-color:#f2c83a ; */
+
+ }
 aside{
     /* background-color: #ffd54f !important; */
 
@@ -73,4 +80,58 @@ p{
 
 #navbarResponsive ul, li a {
     color: #f8edd9 !important;
+}
+
+#features{
+    background-color: #f8edd9;
+}
+.caracteristicas{
+    color: #317039;
+}
+ #features h4{
+    color: #4D4637 ;
+ }
+
+ .uneteG h2{
+    color: #317039;
+ }
+
+ .uneteG h4{
+    color: #4D4637;
+ }
+
+ .goodMarket{
+    color: #317039;
+    font-weight: 700;
+ }
+
+
+
+ .gm-grid{display:grid; gap:16px; margin:28px 0}
+.gm-card{background:white; border:1px solid #e2e8f0; border-radius:18px; padding:18px}
+.gm-card h3{margin:0 0 6px; font-size:18px; color: #4D4637;}
+.gm-card p{margin:0; color:#475569; font-size:15px}
+.gm-cta{display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-top:8px}
+.gm-btn{appearance:none; border:0; cursor:pointer; display:inline-flex; align-items:center; gap:10px; font-weight:700; padding:12px 18px; border-radius:14px; text-decoration:none}
+.gm-btn--primary{background:#317039; color:white; box-shadow:0 6px 18px rgba(14, 233, 72, 0.25)}
+.gm-btn--primary:hover{filter:brightness(.95)}
+.gm-btn--ghost{background:transparent; color:#317039}
+.gm-btn:hover{color: #f8edd9 !important;}
+.gm-note{
+    font-size:13px;
+    color:#475569
+    }
+.gm-steps{margin:28px 0; padding-left:0; list-style:none; counter-reset: step}
+.gm-step{position:relative; margin-bottom:20px; padding-left:46px}
+.gm-step::before{counter-increment: step; content: counter(step); position:absolute; left:0; top:0; width:32px; height:32px; border-radius:50%; background:#317039; color:#fff; font-weight:700; display:flex; align-items:center; justify-content:center; box-shadow:0 2px 6px rgba(0,0,0,.15)}
+.gm-step strong{display:block; margin-bottom:4px; font-size:16px; color: #4D4637;}
+
+ .cuentas{
+    background-color: #f8edd9 !important;
+    border-radius: 40px;
+    height: 40%;
+}
+
+.descargaimg img{
+    transform: rotate(-20deg);
 }
