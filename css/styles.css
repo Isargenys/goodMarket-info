@@ -10834,12 +10834,17 @@ html {
 }
 
 .bg-gradient-primary-to-secondary {
-  background: linear-gradient(45deg, #2937f0, #9f1ae2) !important;
+  background: linear-gradient(45deg, #317039, #f1be49) !important;
 }
 
 .font-alt {
   font-family: "Kanit", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
 }
+
+/* .btn-enviar{
+  background-color: #317039;
+
+} */
 
 .text-gradient {
   background: -webkit-linear-gradient(#317039, #f1be49);

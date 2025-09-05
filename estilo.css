@@ -45,7 +45,7 @@ html, body {
 }
 .btn-contacto:hover{
     color: #f8edd9;
-    border: 2px solid #f2c83a;
+    /* border: 2px solid #f2c83a; */
 
     /* background-color:#f2c83a ; */
 
@@ -134,4 +134,27 @@ p{
 
 .descargaimg img{
     transform: rotate(-20deg);
+}
+
+.cuentas {
+    overflow: visible;
+}
+
+.imagenCellD {
+    max-width: 65% !important;
+    height: auto;
+    margin: -14% -45% -22% -22%; /* Márgenes negativos para que sobresalga */
+}
+
+.tituloDes{
+   color: #317039; 
+}
+
+
+footer{
+    background-color:#317039 ;
+}
+
+.btn-enviar{
+    background-color: #317039 !important;
 }
