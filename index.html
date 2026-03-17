@@ -456,12 +456,12 @@
         margin-bottom: 0.5rem;
       }
 
-      .features-phone-img {
+      /* .features-phone-img {
         max-width: 78%;
         height: auto;
         filter: drop-shadow(0 20px 40px rgba(19,48,32,0.2));
         animation: float 6s ease-in-out infinite;
-      }
+      } */
 
       /* ================================================
          ÚNETE
@@ -730,6 +730,191 @@
         .cta-phone-img  { max-width: 72%; }
         .quote-card     { padding: 2rem 1.5rem; }
       }
+
+      /* ================================================
+   PHONE MOCKUP
+================================================ */
+.phone-mockup {
+  position: relative;
+  display: inline-block;
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Marco del teléfono */
+.phone-mockup__frame {
+  position: relative;
+  width: 220px;
+  height: 440px;
+  background: linear-gradient(145deg, #1a2a1a, #0d1f0d);
+  border-radius: 36px;
+  padding: 14px 10px;
+  margin: 0 auto;
+
+  /* Borde con brillo */
+  box-shadow:
+    0 0 0 2px #2a4a2a,
+    0 0 0 4px #1a3a1a,
+    inset 0 0 0 1px rgba(50, 112, 57, 0.3),
+    0 30px 70px rgba(19, 48, 32, 0.55),
+    0 10px 30px rgba(0, 0, 0, 0.4);
+
+  /* Botones laterales decorativos */
+  overflow: visible;
+}
+
+/* Botones laterales izquierda (volumen) */
+.phone-mockup__frame::before {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: 80px;
+  width: 4px;
+  height: 28px;
+  background: linear-gradient(to bottom, #2a4a2a, #1a3a1a);
+  border-radius: 3px 0 0 3px;
+  box-shadow:
+    0 36px 0 #2a4a2a,
+    0 72px 0 #2a4a2a;
+}
+
+/* Botón lateral derecha (encendido) */
+.phone-mockup__frame::after {
+  content: '';
+  position: absolute;
+  right: -5px;
+  top: 110px;
+  width: 4px;
+  height: 44px;
+  background: linear-gradient(to bottom, #2a4a2a, #1a3a1a);
+  border-radius: 0 3px 3px 0;
+}
+
+/* Altavoz superior */
+.phone-mockup__speaker {
+  width: 48px;
+  height: 5px;
+  background: #0a150a;
+  border-radius: 3px;
+  margin: 0 auto 10px;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.8);
+  position: relative;
+  z-index: 2;
+}
+
+/* Cámara frontal */
+.phone-mockup__camera {
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle at 35% 35%, #1a3a4a, #050e10);
+  border-radius: 50%;
+  margin: -6px auto 8px;
+  box-shadow:
+    0 0 0 1.5px #0a1f2a,
+    inset 0 0 3px rgba(6, 182, 212, 0.15);
+  position: relative;
+  z-index: 2;
+}
+
+/* Pantalla */
+.phone-mockup__screen {
+  width: 100%;
+  /* Altura = frame - speaker - camera - home - paddings */
+  height: 358px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #000;
+  position: relative;
+
+  /* Reflejo sutil en pantalla */
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
+}
+
+.phone-mockup__screen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform 6s ease;
+}
+
+/* Scroll suave de la imagen al hacer hover */
+.phone-mockup:hover .phone-mockup__screen img {
+  transform: translateY(calc(-100% + 358px));
+}
+
+/* Botón home inferior */
+.phone-mockup__home {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #1e3a1e, #0d1f0d);
+  border: 2px solid #2a4a2a;
+  margin: 10px auto 0;
+  position: relative;
+  box-shadow:
+    0 2px 6px rgba(0,0,0,0.5),
+    inset 0 1px 2px rgba(50, 112, 57, 0.2);
+}
+
+/* Cuadrado interior del botón home */
+.phone-mockup__home::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid rgba(50, 112, 57, 0.5);
+  border-radius: 4px;
+}
+
+/* Brillo lateral del teléfono */
+.phone-mockup__shine {
+  position: absolute;
+  top: 8%;
+  left: 6px;
+  width: 6px;
+  height: 55%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255,255,255,0.08),
+    rgba(255,255,255,0.01)
+  );
+  border-radius: 3px;
+  pointer-events: none;
+}
+
+/* ── Responsive ── */
+@media (max-width: 991.98px) {
+  .phone-mockup__frame {
+    width: 190px;
+    height: 380px;
+  }
+
+  .phone-mockup__screen {
+    height: 308px;
+  }
+
+  .phone-mockup:hover .phone-mockup__screen img {
+    transform: translateY(calc(-100% + 308px));
+  }
+}
+
+@media (max-width: 575.98px) {
+  .phone-mockup__frame {
+    width: 175px;
+    height: 352px;
+  }
+
+  .phone-mockup__screen {
+    height: 285px;
+  }
+
+  .phone-mockup:hover .phone-mockup__screen img {
+    transform: translateY(calc(-100% + 285px));
+  }
+}
     </style>
   </head>
 
@@ -824,7 +1009,7 @@
             </div>
 
             <div class="app-badge-wrap">
-              <a href="#!" aria-label="Descargar en Google Play">
+              <a href="https://play.google.com/store/apps/details?id=com.felixdev.goodmarketlist&hl=es_419" aria-label="Descargar en Google Play">
                 <img class="app-badge" src="assets/img/google-play-badge.svg" alt="Google Play" />
               </a>
             </div>
@@ -899,9 +1084,28 @@
             </div>
           </div>
 
-          <div class="col-lg-4 text-center fade-in-up">
-            <img src="assets/2.png" alt="GoodMarket Features" class="features-phone-img" />
+                  <div class="col-lg-4 text-center fade-in-up">
+          <div class="phone-mockup">
+            <div class="phone-mockup__frame">
+              <!-- Altavoz -->
+              <div class="phone-mockup__speaker"></div>
+              <!-- Cámara -->
+              <div class="phone-mockup__camera"></div>
+              <!-- Pantalla con la imagen -->
+              <div class="phone-mockup__screen">
+                <img src="assets/6343.jpg" alt="GoodMarket Features" />
+              </div>
+              <!-- Botón home -->
+              <div class="phone-mockup__home"></div>
+            </div>
+            <!-- Brillo decorativo -->
+            <div class="phone-mockup__shine"></div>
           </div>
+        </div>
+
+          <!-- <div class="col-lg-4 text-center fade-in-up">
+            <img src="assets/6343.jpg" alt="GoodMarket Features" class="features-phone-img" />
+          </div> -->
 
           <div class="col-lg-4">
             <div class="row gy-4">
@@ -946,7 +1150,7 @@
               ahorrar comparando precios y armando sus listas de compras.
               Queremos que tu supermercado también forme parte de esta experiencia.
             </p>
-            <a class="btn-unete" href="#form-aliados">
+            <a class="btn-unete" href="https://wa.me/+18494528882?text=Quieres%20unirte%20a%20GoodMartek%20">
               🚀 Quiero mi supermercado en GoodMarket
             </a>
           </div>
@@ -1016,7 +1220,7 @@
         <div class="row gx-5 align-items-center">
 
           <div class="col-lg-5 text-center mb-5 mb-lg-0 fade-in-up">
-            <img src="assets/3.png" alt="Descarga GoodMarket" class="cta-phone-img" />
+            <img src="assets/6344.jpg" alt="Descarga GoodMarket" class="cta-phone-img" />
           </div>
 
           <div class="col-lg-7 fade-in-up delay-2">
@@ -1030,7 +1234,7 @@
               gratis. Disponible en Google Play.
             </p>
             <div class="app-badge-wrap">
-              <a href="#!" aria-label="Descargar en Google Play">
+              <a href="https://play.google.com/store/apps/details?id=com.felixdev.goodmarketlist&hl=es_419" aria-label="Descargar en Google Play">
                 <img class="app-badge" src="assets/img/google-play-badge.svg" alt="Google Play" />
               </a>
             </div>
