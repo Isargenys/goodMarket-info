@@ -1,297 +1,1152 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>GoodMarket</title>
-        <link rel="icon" type="image/x-icon" href="assets/Dark_small_logo.png" />
-        <!-- Bootstrap icons-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-        <!-- Google fonts-->
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,600;1,600&amp;display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,500;0,600;0,700;1,300;1,500;1,600;1,700&amp;display=swap" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-        <link rel="stylesheet" href="estilo.css">
-    </head>
-    <body id="page-top">
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm " id="mainNav">
-            <div class="container ">
-                 <a class="navbar-brand fw-bold customTitle" href="#page-top">
-                    <img class="bg-transparent" src="assets/GoodMarket_white-removebg-preview.png" alt="" >
-                </a>
-            
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    Menu
-                    <i class="bi-list"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
-                        <li class="nav-item"><a class="nav-link me-lg-3" href="#features">Caracteristicas</a></li>
-                        <li class="nav-item"><a class="nav-link me-lg-3" href="#download">Descargala</a></li>
-                    </ul>
-                    <button class="btn btn-contacto rounded-pill px-3 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#feedbackModal">
-                        <span class="d-flex align-items-center">
-                            <i class="bi-chat-text-fill me-2"></i>
-                            <span class="small">Envia tu comentario</span>
-                        </span>
-                    </button>
-                </div>
-            </div>
-        </nav>
-        <!-- Mashead header-->
-        <header class="masthead imagenP">
-            <div class="container px-5 ">
-                <div class="row gx-5 align-items-center">
-                    <div class="col-lg-6">
-                        <!-- Mashead text and app badges-->
-                        <div class="mb-5 mb-lg-0 text-center text-lg-start">
-                            <h1 class="display-1 lh-1 mb-3 text-white">GoodMarket</h1>
-                            <p class="lead fw-normal  mb-5 text-white">Una app que mantiene las compras organizadas y tu cartera segura!</p>
-                            <div class="d-flex flex-column flex-lg-row align-items-center">
-                                <a class="me-lg-3 mb-4 mb-lg-0" href="#!"><img class="app-badge" src="assets/img/google-play-badge.svg" alt="..." /></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <!-- Masthead device mockup feature-->
-                        <div class="masthead-device-mockup">
-                            <img src="assets/1.png" alt="" style="max-width: 80%; height: 80% " class="imagenCell">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <!-- Quote/testimonial aside-->
-        <aside class="text-center ">
-            <div class="container px-5">
-                <div class="row gx-5 justify-content-center">
-                    <div class="col-xl-8">
-                        <div class=" parrafo fs-3  mb-4">"Con GoodMarket puedes ordenar tus compras por categorías para una mayor comodidad a la hora de comprar y puedes consultar en que supermercado te sale mas economico cada producto."</div>
-                        <!-- <img src="assets/img/tnw-logo.svg" alt="..." style="height: 3rem" /> -->
-                        <h2 class="tituloSecun">GoodMarket</h2>
-                    </div>
-                </div>
-            </div>
-        </aside>
-        <!-- App features section-->
-        <section id="features">
-            <div class="container">
-                <h1 class="text-center mb-5  caracteristicas display-4">Nuestras Caracteristicas</h1>
-                <div class="row gx-5 align-items-center">
-                    <div class="col-lg-4 mb-5 mb-lg-0">
-                        <div class="container-fluid ">
-                            <div class="row gx-5">
-                                <div class="col-md-12 mb-5">
-                                    <!-- Feature item-->
-                                    <div class="text-center">
-                                        <i class="bi-list-check icon-feature text-gradient d-block mb-3"></i>
-                                        <h4 class="font-alt">Gestión de Listas de Compras</h4>
-                                        <p class="text-muted mb-0">Permite a los usuarios crear, editar y organizar listas de compras personalizadas.!</p>
-                                    </div>
-                                    <div class="text-center">
-                                        <i class="bi-phone icon-feature text-gradient d-block mb-3"></i>
-                                        <h4 class="font-alt">Interfaz Intuitiva y Amigable</h4>
-                                        <p class="text-muted mb-0">Ofrece una interfaz de usuario fácil de usar con navegación intuitiva, iconos claros y funciones accesibles!</p>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="GoodMarket - Organiza tus compras y cuida tu cartera" />
+    <title>GoodMarket</title>
+    <link rel="icon" type="image/x-icon" href="assets/Dark_small_logo.png" />
 
-                                    </div>
-                                </div>
-                            </div>
-                          
-                        </div>
-                    </div>
-                    <div class="col-lg-4 order-lg-0">
-                        <div class="masthead-device-mockup text-center">
-                            <img src="assets/2.png" alt="" style="max-width: 80%; height: 80% " class="imagenCell">
-                        </div>
-                    </div>
-                    <div class="col-lg-4 order-lg-1 mb-5 mb-lg-0">
-                        <div class="col-md-12 mb-5 mb-md-0">
-                            <!-- Feature item-->
-                            <div class="text-center">
-                                <i class="bi-search icon-feature text-gradient d-block mb-3"></i>
-                                <h4 class="font-alt">Búsqueda de Precios</h4>
-                                <p class="text-muted mb-0">Ofrece una función de búsqueda que permite a los usuarios encontrar productos específicos y comparar precios.</p>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600;700;800&family=Newsreader:ital,wght@0,600;1,600&display=swap" rel="stylesheet" />
 
-                            </div>
-                            <div class="text-center">
-                                <i class="bi-cart-check icon-feature text-gradient d-block mb-3"></i>
-                                <h4 class="font-alt">Historial de Compras</h4>
-                                <p class="text-muted mb-0">Mantiene un historial de compras para que los usuarios puedan hacer un seguimiento de sus gastos.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <style>
+      /* ================================================
+         VARIABLES DE MARCA
+      ================================================ */
+      :root {
+        --forest:    #327039;
+        --tilled:    #133020;
+        --alabaster: #F8EDD9;
+        --wheat:     #F0BE49;
+        --cherry:    #DD5C36;
+
+        --forest-light:  rgba(50, 112, 57, 0.12);
+        --forest-mid:    rgba(50, 112, 57, 0.35);
+        --tilled-light:  rgba(19, 48, 32, 0.85);
+        --wheat-light:   rgba(240, 190, 73, 0.15);
+        --cherry-light:  rgba(221, 92, 54, 0.12);
+
+        --radius:    1rem;
+        --shadow:    0 20px 60px rgba(19, 48, 32, 0.15);
+        --shadow-sm: 0 4px 20px rgba(19, 48, 32, 0.08);
+      }
+
+      *, *::before, *::after { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+
+      body {
+        font-family: 'Mulish', sans-serif;
+        color: var(--tilled);
+        background: #fff;
+        overflow-x: hidden;
+      }
+
+      /* ================================================
+         LOGO TIPOGRÁFICO
+      ================================================ */
+      .gm-logo {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        text-decoration: none;
+        user-select: none;
+      }
+
+      .gm-logo__icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 38px;
+        height: 38px;
+        background: var(--forest);
+        border-radius: 10px;
+        flex-shrink: 0;
+        position: relative;
+        box-shadow: 0 4px 12px rgba(50, 112, 57, 0.35);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .gm-logo__icon::after {
+        content: '';
+        position: absolute;
+        bottom: -3px;
+        right: -3px;
+        width: 11px;
+        height: 11px;
+        background: var(--wheat);
+        border-radius: 50%;
+        border: 2px solid #fff;
+      }
+
+      .gm-logo__icon i {
+        font-size: 1.15rem;
+        color: #fff;
+      }
+
+      .gm-logo:hover .gm-logo__icon {
+        transform: rotate(-6deg) scale(1.08);
+        box-shadow: 0 6px 18px rgba(50, 112, 57, 0.45);
+      }
+
+      .gm-logo__text {
+        display: flex;
+        align-items: baseline;
+        font-family: 'Newsreader', serif;
+        font-size: 1.5rem;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        line-height: 1;
+      }
+
+      .gm-logo__good   { color: var(--forest); transition: color 0.3s; }
+      .gm-logo__market {
+        color: var(--wheat);
+        text-shadow: 0 1px 2px rgba(19,48,32,0.08);
+        transition: color 0.3s;
+      }
+
+      /* Variante footer (sobre oscuro) */
+      .gm-logo--light .gm-logo__icon {
+        background: rgba(240, 190, 73, 0.15);
+        border: 1.5px solid rgba(240, 190, 73, 0.4);
+        box-shadow: none;
+      }
+      .gm-logo--light .gm-logo__icon i   { color: var(--wheat); }
+      .gm-logo--light .gm-logo__icon::after {
+        background: var(--forest);
+        border-color: var(--tilled);
+      }
+      .gm-logo--light .gm-logo__good   { color: var(--alabaster); }
+      .gm-logo--light .gm-logo__market { color: var(--wheat); text-shadow: none; }
+
+      /* ================================================
+         NAVBAR
+      ================================================ */
+      #mainNav {
+        background: rgba(255, 255, 255, 0.88);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-bottom: 1px solid rgba(50, 112, 57, 0.15);
+        transition: all 0.3s ease;
+        padding: 0.7rem 0;
+      }
+
+      #mainNav.scrolled {
+        background: rgba(255, 255, 255, 0.98);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .nav-link {
+        font-weight: 700;
+        font-size: 0.9rem;
+        color: var(--tilled) !important;
+        padding: 0.5rem 0.85rem !important;
+        position: relative;
+        transition: color 0.3s;
+      }
+
+      .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0; left: 0.85rem; right: 0.85rem;
+        height: 2px;
+        background: var(--forest);
+        border-radius: 2px;
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+      }
+
+      .nav-link:hover                { color: var(--forest) !important; }
+      .nav-link:hover::after         { transform: scaleX(1); }
+
+      .btn-nav-feedback {
+        background: var(--forest);
+        color: #fff !important;
+        border: none;
+        font-weight: 700;
+        font-size: 0.85rem;
+        padding: 0.55rem 1.3rem;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 14px rgba(50, 112, 57, 0.35);
+      }
+
+      .btn-nav-feedback:hover {
+        background: var(--tilled);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 22px rgba(19, 48, 32, 0.35);
+        color: var(--wheat) !important;
+      }
+
+      .navbar-toggler {
+        border: 2px solid var(--forest-mid);
+        border-radius: 0.5rem;
+        padding: 0.4rem 0.75rem;
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--forest);
+      }
+
+      .navbar-toggler:focus { box-shadow: 0 0 0 3px var(--forest-light); }
+
+      /* ================================================
+         HERO
+      ================================================ */
+      .masthead {
+        min-height: 100vh;
+        background:
+          radial-gradient(ellipse at 75% 30%, rgba(50,112,57,0.28) 0%, transparent 55%),
+          radial-gradient(ellipse at 15% 80%, rgba(240,190,73,0.15) 0%, transparent 50%),
+          linear-gradient(160deg, var(--tilled) 0%, #1a4028 55%, #0d2318 100%);
+        display: flex;
+        align-items: center;
+        padding: 7rem 0 4rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .masthead::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(circle, rgba(240,190,73,0.06) 1px, transparent 1px);
+        background-size: 36px 36px;
+        pointer-events: none;
+      }
+
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        background: rgba(240, 190, 73, 0.15);
+        border: 1px solid rgba(240, 190, 73, 0.45);
+        color: var(--wheat);
+        font-size: 0.78rem;
+        font-weight: 800;
+        padding: 0.4rem 1.1rem;
+        border-radius: 50px;
+        margin-bottom: 1.5rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .hero-title {
+        font-family: 'Newsreader', serif;
+        font-size: clamp(3rem, 8vw, 5.5rem);
+        font-weight: 600;
+        color: var(--alabaster);
+        line-height: 1.05;
+        margin-bottom: 1.5rem;
+      }
+
+      .hero-title span { color: var(--wheat); }
+
+      .hero-subtitle {
+        font-size: 1.1rem;
+        color: rgba(248, 237, 217, 0.75);
+        font-weight: 400;
+        line-height: 1.75;
+        margin-bottom: 2.5rem;
+        max-width: 460px;
+      }
+
+      .hero-stats {
+        display: flex;
+        gap: 1.75rem;
+        margin-bottom: 2.5rem;
+        flex-wrap: wrap;
+      }
+
+      .hero-stat-number {
+        display: block;
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: var(--wheat);
+      }
+
+      .hero-stat-label {
+        font-size: 0.72rem;
+        color: rgba(248,237,217,0.55);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+
+      .hero-stat-divider {
+        width: 1px;
+        background: rgba(248,237,217,0.12);
+        align-self: stretch;
+      }
+
+      .app-badge-wrap { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+
+      .app-badge-wrap a { transition: transform 0.3s, filter 0.3s; }
+      .app-badge-wrap a:hover { transform: translateY(-3px); filter: brightness(1.1); }
+
+      .app-badge {
+        height: 52px;
+        border-radius: 0.75rem;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+      }
+
+      .hero-image-wrapper {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .hero-glow {
+        position: absolute;
+        width: 380px; height: 380px;
+        background: radial-gradient(circle, rgba(50,112,57,0.45), transparent 68%);
+        border-radius: 50%;
+        z-index: 0;
+      }
+
+      .hero-phone-img {
+        position: relative;
+        z-index: 1;
+        max-width: 75%;
+        height: auto;
+        filter: drop-shadow(0 30px 55px rgba(0,0,0,0.5));
+        animation: float 6s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50%       { transform: translateY(-18px); }
+      }
+
+      /* ================================================
+         QUOTE
+      ================================================ */
+      .quote-section {
+        background: var(--alabaster);
+        padding: 5.5rem 0;
+      }
+
+      .quote-card {
+        background: #fff;
+        border-radius: 1.5rem;
+        padding: 3rem;
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(50,112,57,0.1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .quote-card::before {
+        content: '"';
+        position: absolute;
+        top: -1.5rem; left: 1.5rem;
+        font-size: 11rem;
+        font-family: 'Newsreader', serif;
+        color: rgba(50,112,57,0.06);
+        line-height: 1;
+        pointer-events: none;
+      }
+
+      .quote-card::after {
+        content: '';
+        position: absolute;
+        left: 0; top: 15%; bottom: 15%;
+        width: 5px;
+        background: linear-gradient(to bottom, var(--forest), var(--wheat));
+        border-radius: 0 4px 4px 0;
+      }
+
+      .quote-text {
+        font-size: clamp(1rem, 2.4vw, 1.2rem);
+        color: #4a5568;
+        font-style: italic;
+        line-height: 1.85;
+        position: relative;
+        z-index: 1;
+      }
+
+      .quote-brand {
+        font-family: 'Newsreader', serif;
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: var(--forest);
+        margin-top: 1.5rem;
+      }
+
+      /* ================================================
+         SECTION HELPERS
+      ================================================ */
+      .section-label {
+        display: inline-block;
+        font-size: 0.75rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--forest);
+        background: var(--forest-light);
+        padding: 0.4rem 1rem;
+        border-radius: 50px;
+        margin-bottom: 1rem;
+      }
+
+      .section-label--cherry {
+        color: var(--cherry);
+        background: var(--cherry-light);
+      }
+
+      .section-label--dark {
+        color: var(--wheat);
+        background: rgba(240,190,73,0.15);
+        border: 1px solid rgba(240,190,73,0.3);
+      }
+
+      .section-title {
+        font-family: 'Newsreader', serif;
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 600;
+        color: var(--tilled);
+        line-height: 1.2;
+      }
+
+      /* ================================================
+         FEATURES
+      ================================================ */
+      #features { padding: 6rem 0; background: #fff; }
+
+      .feature-card {
+        background: #fff;
+        border: 1.5px solid #e8ede8;
+        border-radius: var(--radius);
+        padding: 2rem 1.75rem;
+        transition: all 0.35s ease;
+        height: 100%;
+      }
+
+      .feature-card:hover {
+        border-color: var(--forest);
+        box-shadow: var(--shadow);
+        transform: translateY(-6px);
+      }
+
+      .feature-icon-wrap {
+        width: 58px; height: 58px;
+        background: var(--forest-light);
+        border-radius: 0.9rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.1rem;
+        font-size: 1.55rem;
+        color: var(--forest);
+        transition: all 0.3s ease;
+      }
+
+      .feature-card:hover .feature-icon-wrap {
+        background: var(--forest);
+        color: #fff;
+      }
+
+      .feature-card h5 {
+        font-weight: 700;
+        font-size: 1rem;
+        color: var(--tilled);
+        margin-bottom: 0.5rem;
+      }
+
+      .features-phone-img {
+        max-width: 78%;
+        height: auto;
+        filter: drop-shadow(0 20px 40px rgba(19,48,32,0.2));
+        animation: float 6s ease-in-out infinite;
+      }
+
+      /* ================================================
+         ÚNETE
+      ================================================ */
+      .unete-section {
+        background: linear-gradient(180deg, var(--alabaster) 0%, #eee8d8 100%);
+        padding: 6rem 0;
+      }
+
+      .unete-title {
+        font-family: 'Newsreader', serif;
+        font-size: clamp(2rem, 4vw, 2.75rem);
+        font-weight: 600;
+        color: var(--tilled);
+        line-height: 1.2;
+      }
+
+      .unete-subtitle {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: var(--forest);
+      }
+
+      .unete-text { color: #5a6a5a; line-height: 1.8; font-size: 1rem; }
+      .gm-brand  { font-weight: 800; color: var(--forest); }
+
+      .btn-unete {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: var(--wheat);
+        color: var(--tilled) !important;
+        font-weight: 800;
+        font-size: 0.95rem;
+        padding: 0.85rem 1.85rem;
+        border-radius: 50px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 24px rgba(240,190,73,0.4);
+        border: none;
+      }
+
+      .btn-unete:hover {
+        background: var(--cherry);
+        color: #fff !important;
+        transform: translateY(-3px);
+        box-shadow: 0 12px 30px rgba(221,92,54,0.38);
+      }
+
+      .benefit-card {
+        background: #fff;
+        border: 1.5px solid rgba(50,112,57,0.12);
+        border-radius: var(--radius);
+        padding: 1.5rem;
+        height: 100%;
+        transition: all 0.3s ease;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .benefit-card:hover {
+        border-color: var(--forest);
+        transform: translateY(-4px);
+        box-shadow: var(--shadow);
+      }
+
+      .benefit-card h3 {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--tilled);
+        margin-bottom: 0.5rem;
+      }
+
+      .benefit-card p { font-size: 0.88rem; color: #6b7a6b; margin: 0; }
+
+      .steps-box {
+        background: #fff;
+        border: 1.5px solid rgba(50,112,57,0.12);
+        border-radius: var(--radius);
+        padding: 1.75rem;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .steps-list { list-style: none; padding: 0; margin: 0; }
+
+      .step-item {
+        display: flex;
+        gap: 1rem;
+        align-items: flex-start;
+        padding: 0.9rem 0;
+        border-bottom: 1px solid #eef2ee;
+      }
+
+      .step-item:last-child { border-bottom: none; }
+
+      .step-number {
+        flex-shrink: 0;
+        width: 34px; height: 34px;
+        background: var(--forest);
+        color: #fff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 0.85rem;
+      }
+
+      .step-content strong {
+        display: block;
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: var(--tilled);
+        margin-bottom: 0.2rem;
+      }
+
+      .step-content span { font-size: 0.82rem; color: #8a9a8a; }
+
+      /* ================================================
+         CTA / DOWNLOAD
+      ================================================ */
+      .cta-section {
+        background:
+          radial-gradient(ellipse at 80% 20%, rgba(50,112,57,0.3) 0%, transparent 55%),
+          radial-gradient(ellipse at 10% 90%, rgba(240,190,73,0.12) 0%, transparent 50%),
+          linear-gradient(155deg, var(--tilled) 0%, #1a4028 60%, #0d2318 100%);
+        padding: 5.5rem 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cta-section::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(circle, rgba(240,190,73,0.06) 1px, transparent 1px);
+        background-size: 36px 36px;
+        pointer-events: none;
+      }
+
+      .cta-phone-img {
+        max-width: 82%;
+        height: auto;
+        filter: drop-shadow(0 25px 50px rgba(0,0,0,0.5));
+        animation: float 6s ease-in-out infinite;
+      }
+
+      .cta-title {
+        font-family: 'Newsreader', serif;
+        font-size: clamp(2.2rem, 5vw, 3.5rem);
+        font-weight: 600;
+        color: var(--alabaster);
+        line-height: 1.15;
+        margin-bottom: 1rem;
+      }
+
+      .cta-title span { color: var(--wheat); }
+
+      .cta-subtitle {
+        color: rgba(248,237,217,0.7);
+        font-size: 1.05rem;
+        line-height: 1.75;
+        margin-bottom: 2rem;
+      }
+
+      /* ================================================
+         FOOTER
+      ================================================ */
+      footer {
+        background: var(--tilled);
+        padding: 2.5rem 0;
+        border-top: 3px solid var(--forest);
+      }
+
+      .footer-text { color: rgba(248,237,217,0.5); font-size: 0.85rem; }
+      .footer-text a { color: rgba(248,237,217,0.65); text-decoration: none; transition: color 0.2s; }
+      .footer-text a:hover { color: var(--wheat); }
+      .footer-author { color: var(--wheat); font-weight: 700; }
+
+      /* ================================================
+         MODAL
+      ================================================ */
+      .modal-content {
+        border: none;
+        border-radius: 1.25rem;
+        overflow: hidden;
+        box-shadow: 0 30px 80px rgba(19,48,32,0.2);
+      }
+
+      .modal-header-gm {
+        background: linear-gradient(135deg, var(--tilled), var(--forest));
+        padding: 1.5rem 1.75rem;
+        border-bottom: none;
+      }
+
+      .modal-header-gm .modal-title {
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: var(--alabaster);
+      }
+
+      .modal-body { padding: 2rem; background: #fff; }
+
+      .form-floating .form-control,
+      .form-floating textarea {
+        border: 1.5px solid #dde8dd;
+        border-radius: 0.75rem;
+        font-size: 0.9rem;
+        transition: border-color 0.3s, box-shadow 0.3s;
+      }
+
+      .form-floating .form-control:focus,
+      .form-floating textarea:focus {
+        border-color: var(--forest);
+        box-shadow: 0 0 0 3px var(--forest-light);
+      }
+
+      .btn-submit {
+        background: var(--forest);
+        border: none;
+        color: #fff;
+        font-weight: 700;
+        border-radius: 50px;
+        padding: 0.85rem;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 6px 20px rgba(50,112,57,0.35);
+      }
+
+      .btn-submit:hover {
+        background: var(--tilled);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 28px rgba(19,48,32,0.35);
+        color: var(--wheat);
+      }
+
+      /* ================================================
+         ANIMACIONES
+      ================================================ */
+      .fade-in-up {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: opacity 0.65s ease, transform 0.65s ease;
+      }
+
+      .fade-in-up.visible { opacity: 1; transform: translateY(0); }
+
+      .delay-1 { transition-delay: 0.1s; }
+      .delay-2 { transition-delay: 0.2s; }
+      .delay-3 { transition-delay: 0.3s; }
+
+      /* ================================================
+         RESPONSIVE
+      ================================================ */
+      @media (max-width: 991.98px) {
+        .masthead { padding: 6rem 0 3.5rem; text-align: center; }
+        .hero-subtitle  { max-width: 100%; }
+        .hero-stats     { justify-content: center; }
+        .app-badge-wrap { justify-content: center; }
+        .hero-phone-img     { max-width: 55%; margin-top: 2.5rem; }
+        .features-phone-img { max-width: 52%; margin: 1.5rem auto; display: block; }
+        .cta-phone-img      { max-width: 55%; margin: 0 auto 2.5rem; display: block; }
+      }
+
+      @media (max-width: 575.98px) {
+        .hero-phone-img { max-width: 76%; }
+        .cta-phone-img  { max-width: 72%; }
+        .quote-card     { padding: 2rem 1.5rem; }
+      }
+    </style>
+  </head>
+
+  <body id="page-top">
+
+    <!-- ================================================
+         NAVBAR
+    ================================================ -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+      <div class="container">
+
+        <!-- LOGO TIPOGRÁFICO — Versión navbar (sobre blanco) -->
+        <a class="navbar-brand gm-logo" href="#page-top" aria-label="GoodMarket">
+          <span class="gm-logo__icon">
+            <i class="bi bi-cart-check-fill"></i>
+          </span>
+          <span class="gm-logo__text">
+            <span class="gm-logo__good">Good</span><span class="gm-logo__market">Market</span>
+          </span>
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          Menú <i class="bi bi-list ms-1"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ms-auto me-3 my-3 my-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="#features">Características</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link me-2" href="#download">Descárgala</a>
+            </li>
+          </ul>
+          <button
+            class="btn btn-nav-feedback"
+            data-bs-toggle="modal"
+            data-bs-target="#feedbackModal"
+          >
+            <i class="bi bi-chat-text-fill me-2"></i>Envía tu comentario
+          </button>
+        </div>
+
+      </div>
+    </nav>
+
+    <!-- ================================================
+         HERO
+    ================================================ -->
+    <header class="masthead">
+      <div class="container px-4 px-lg-5">
+        <div class="row gx-5 align-items-center">
+
+          <div class="col-lg-6 fade-in-up">
+            <div class="hero-badge">
+              <i class="bi bi-patch-check-fill"></i>
+              Nuevo · Disponible en Android
             </div>
-        </section>
-        <!-- Basic features section-->
-        <section class="bg-light uneteG">
-            <div class="container px-5">
-                <div class="row gx-5 align-items-center justify-content-center justify-content-lg-between">
-                    <div class="col-12 col-lg-5">
-                        <h2 class="display-4 lh-1 mb-4">Súmate a GoodMarket</h2>
-                        <h4 class=" lh-5 mb-4">Haz que más personas descubran tu supermercado</h4>
-                        <p class="lead fw-normal text-muted mb-5 mb-lg-0">
-                            En <span class="goodMarket">GoodMarket</span> ayudamos a las familias a ahorrar comparando precios y armando sus listas de compras.
-Queremos que tu supermercado también forme parte de esta experiencia.
-                        </p>
-                        <div class="gm-cta mt-5" role="group" aria-label="Acciones">
-                            <a class="gm-btn gm-btn--primary" href="#form-aliados" aria-label="Quiero mi supermercado en GoodMarket">
-                            🚀 Quiero mi supermercado en GoodMarket
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-sm-8 col-md-6">
-                        <div class="gm-grid" role="list" aria-label="Beneficios de unirse">
-                            <article class="gm-card" role="listitem">
-                            <h3>🌟 Más visibilidad</h3>
-                            <p>Tus precios y promociones llegan a compradores que ya están buscando dónde comprar.</p>
-                            </article>
-                            <article class="gm-card" role="listitem">
-                            <h3>🛍️ Más clientes</h3>
-                            <p>Conecta con personas listas para decidir y convertir.</p>
-                            </article>
-                            <article class="gm-card" role="listitem">
-                            <h3>💸 Más ventas</h3>
-                            <p>Destaca frente a la competencia con tus mejores ofertas.</p>
-                            </article>
-                            </div>
-                            <ol class="gm-steps" aria-label="Cómo funciona">
-                                <li class="gm-step">
-                                <strong>Compártenos tus precios y ofertas</strong>
-                                <span class="gm-note">En un archivo o mediante nuestro formulario sencillo.</span>
-                                </li>
-                                <li class="gm-step">
-                                <strong>Nosotros los publicamos en GoodMarket</strong>
-                                <span class="gm-note">Tu tienda aparece visible en búsquedas y listas de compras.</span>
-                                </li>
-                                <li class="gm-step">
-                                <strong>Más visitas, más ventas</strong>
-                                <span class="gm-note">Recibe clientes con intención de compra en tu zona.</span>
-                                </li>
-                                </ol>
-                    </div>
-                </div>
+
+            <h1 class="hero-title">
+              Good<span>Market</span>
+            </h1>
+
+            <p class="hero-subtitle">
+              La app que mantiene tus compras organizadas, tus listas bajo control
+              y tu cartera bien cuidada. 🛒
+            </p>
+
+            <div class="hero-stats">
+              <div class="hero-stat">
+                <span class="hero-stat-number">100%</span>
+                <span class="hero-stat-label">Gratis</span>
+              </div>
+              <div class="hero-stat-divider"></div>
+              <div class="hero-stat">
+                <span class="hero-stat-number">+50</span>
+                <span class="hero-stat-label">Productos</span>
+              </div>
+              <div class="hero-stat-divider"></div>
+              <div class="hero-stat">
+                <span class="hero-stat-number">⭐ 5.0</span>
+                <span class="hero-stat-label">Rating</span>
+              </div>
             </div>
-            
-        </section>
-         <!-- Call to action section-->
-         <section class="cta p-5 mt-5">
-          <div class="cuentas">
-            <div class="row ">
-                <div class="col-6">
-                    <div class="masthead-device-mockup text-center descargaimg">
-                        <img src="assets/3.png" alt="" style=" height: auto " class="imagenCellD">
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="cta-content align-content-start">
-                        <div class="container px-5">
-                            <h4 class="tituloDes display-5 lh-1 mb-4 mt-5">
-                                ¡No esperes más!
-                                <br />
-                                 </h4>
-                                 <h5 class="mt-3 mb-3">
-                                    Descarga la app y lleva el control de tus compras de manera fácil y rápida.
-                                 </h5>
-                            <div class="mt-4 d-flex flex-column flex-lg-row align-items-center justify-content-center">
-                                <a class="me-lg-3 mb-4 mb-lg-0" href="#!"><img class="app-badge" src="assets/img/google-play-badge.svg" alt="..." /></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+            <div class="app-badge-wrap">
+              <a href="#!" aria-label="Descargar en Google Play">
+                <img class="app-badge" src="assets/img/google-play-badge.svg" alt="Google Play" />
+              </a>
             </div>
           </div>
-        </section>
 
-                <!-- App badge section-->
-                <section class="descarga" id="download">
-                    <div class="container px-5">
-
-                        <!-- <h2 class="text-center text-white font-alt mb-4">Get the app now!</h2>
-                        <div class="d-flex flex-column flex-lg-row align-items-center justify-content-center">
-                            <a class="me-lg-3 mb-4 mb-lg-0" href="#!"><img class="app-badge" src="assets/img/google-play-badge.svg" alt="..." /></a>
-                            <a href="#!"><img class="app-badge" src="assets/img/app-store-badge.svg" alt="..." /></a> -->
-                        </div>
-                    </div>
-                </section>
-       
-
-        <!-- Footer-->
-        <footer class=" text-center  py-5">
-            <div class="container px-5">
-                <div class="text-white-50 small">
-                    <div class="mb-2">&copy; Your Website 2025. All Rights Reserved. Creado por Isargenys Contreras</div>
-                    <!-- <a href="#!">Privacy</a>
-                    <span class="mx-1">&middot;</span>
-                    <a href="#!">Terms</a>
-                    <span class="mx-1">&middot;</span>
-                    <a href="#!">FAQ</a> -->
-                </div>
+          <div class="col-lg-6 text-center fade-in-up delay-2">
+            <div class="hero-image-wrapper">
+              <div class="hero-glow"></div>
+              <img src="assets/1.png" alt="GoodMarket App Mockup" class="hero-phone-img" />
             </div>
-        </footer>
-        <!-- Feedback Modal-->
-        <div class="modal fade" id="feedbackModal" tabindex="-1" aria-labelledby="feedbackModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
-                <div class="modal-header bg-gradient-primary-to-secondary p-4">
-                  <h5 class="modal-title font-alt text-white" id="feedbackModalLabel">Envíanos tu mensaje</h5>
-                  <button class="btn-close btn-close-white" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+        </div>
+      </div>
+    </header>
+
+    <!-- ================================================
+         QUOTE
+    ================================================ -->
+    <section class="quote-section">
+      <div class="container px-4">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 col-xl-7 fade-in-up">
+            <div class="quote-card text-center">
+              <p class="quote-text">
+                Con GoodMarket puedes ordenar tus compras por categorías para una mayor
+                comodidad y consultar en qué supermercado te sale más económico cada producto.
+              </p>
+              <div class="quote-brand">GoodMarket 🌿</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================
+         FEATURES
+    ================================================ -->
+    <section id="features">
+      <div class="container px-4">
+
+        <div class="text-center mb-5 fade-in-up">
+          <span class="section-label">Funcionalidades</span>
+          <h2 class="section-title mt-2">Nuestras Características</h2>
+          <p class="text-muted mt-3 mx-auto" style="max-width:500px;">
+            Todo lo que necesitas para comprar de forma inteligente, organizada y económica.
+          </p>
+        </div>
+
+        <div class="row gx-4 gy-4 align-items-center">
+
+          <div class="col-lg-4">
+            <div class="row gy-4">
+              <div class="col-12 fade-in-up delay-1">
+                <div class="feature-card">
+                  <div class="feature-icon-wrap"><i class="bi bi-list-check"></i></div>
+                  <h5>Gestión de Listas</h5>
+                  <p class="text-muted small mb-0">
+                    Crea, edita y organiza listas de compras personalizadas con total facilidad.
+                  </p>
                 </div>
-                <div class="modal-body border-0 p-4">
-                  
-                  <form action="https://formsubmit.co/fcarvajal44@gmail.com" method="POST">
-                    <!-- Name input-->
-                    <div class="form-floating mb-3">
-                      <input class="form-control" id="name" name="name" type="text" placeholder="Tu nombre..." required />
-                      <label for="name">Nombre completo</label>
-                    </div>
-                    <!-- Email address input-->
-                    <div class="form-floating mb-3">
-                      <input class="form-control" id="email" name="email" type="email" placeholder="name@example.com" required />
-                      <label for="email">Correo electrónico</label>
-                    </div>
-                    <!-- Phone number input-->
-                    <div class="form-floating mb-3">
-                      <input class="form-control" id="phone" name="phone" type="tel" placeholder="(123) 456-7890" />
-                      <label for="phone">Teléfono</label>
-                    </div>
-                    <!-- Message input-->
-                    <div class="form-floating mb-3">
-                      <textarea class="form-control" id="message" name="message" placeholder="Escribe tu mensaje aquí..." style="height: 10rem" required></textarea>
-                      <label for="message">Mensaje</label>
-                    </div>
-          
-                    <!-- Configuración oculta de formsubmit -->
-                    <input type="hidden" name="_next" value="https://tusitio.com/gracias.html">
-                    <input type="hidden" name="_captcha" value="false">
-          
-                    <!-- Submit Button-->
-                    <div class="d-grid">
-                      <button class="btn btn-enviar text-white rounded-pill btn-lg" type="submit">
-                        Enviar
-                      </button>
-                    </div>
-                  </form>
-          
+              </div>
+              <div class="col-12 fade-in-up delay-2">
+                <div class="feature-card">
+                  <div class="feature-icon-wrap"><i class="bi bi-phone"></i></div>
+                  <h5>Interfaz Intuitiva</h5>
+                  <p class="text-muted small mb-0">
+                    Diseño limpio con navegación fluida, iconos claros y funciones accesibles.
+                  </p>
                 </div>
               </div>
             </div>
           </div>
-          
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <!-- * *                               SB Forms JS                               * *-->
-        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-    </body>
+
+          <div class="col-lg-4 text-center fade-in-up">
+            <img src="assets/2.png" alt="GoodMarket Features" class="features-phone-img" />
+          </div>
+
+          <div class="col-lg-4">
+            <div class="row gy-4">
+              <div class="col-12 fade-in-up delay-1">
+                <div class="feature-card">
+                  <div class="feature-icon-wrap"><i class="bi bi-search"></i></div>
+                  <h5>Búsqueda de Precios</h5>
+                  <p class="text-muted small mb-0">
+                    Encuentra productos y compara precios entre supermercados al instante.
+                  </p>
+                </div>
+              </div>
+              <div class="col-12 fade-in-up delay-2">
+                <div class="feature-card">
+                  <div class="feature-icon-wrap"><i class="bi bi-cart-check"></i></div>
+                  <h5>Historial de Compras</h5>
+                  <p class="text-muted small mb-0">
+                    Registra tus compras y lleva un seguimiento detallado de tus gastos.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================
+         ÚNETE
+    ================================================ -->
+    <section class="unete-section">
+      <div class="container px-4">
+        <div class="row gx-5 gy-5 align-items-center">
+
+          <div class="col-lg-5 fade-in-up">
+            <span class="section-label">Para supermercados</span>
+            <h2 class="unete-title mt-3 mb-2">Súmate a GoodMarket</h2>
+            <p class="unete-subtitle mb-3">Haz que más personas descubran tu supermercado</p>
+            <p class="unete-text mb-4">
+              En <span class="gm-brand">GoodMarket</span> ayudamos a las familias a
+              ahorrar comparando precios y armando sus listas de compras.
+              Queremos que tu supermercado también forme parte de esta experiencia.
+            </p>
+            <a class="btn-unete" href="#form-aliados">
+              🚀 Quiero mi supermercado en GoodMarket
+            </a>
+          </div>
+
+          <div class="col-lg-7 fade-in-up delay-2">
+            <div class="row gx-3 gy-3 mb-4">
+              <div class="col-sm-4">
+                <div class="benefit-card">
+                  <h3>🌟 Más visibilidad</h3>
+                  <p>Tus precios llegan a compradores que ya buscan dónde comprar.</p>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="benefit-card">
+                  <h3>🛍️ Más clientes</h3>
+                  <p>Conecta con personas listas para decidir y convertir.</p>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="benefit-card">
+                  <h3>💸 Más ventas</h3>
+                  <p>Destaca frente a la competencia con tus mejores ofertas.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="steps-box">
+              <p class="fw-bold small text-uppercase mb-3"
+                 style="color:var(--forest); letter-spacing:.07em;">
+                ¿Cómo funciona?
+              </p>
+              <ol class="steps-list">
+                <li class="step-item">
+                  <div class="step-number">1</div>
+                  <div class="step-content">
+                    <strong>Compártenos tus precios y ofertas</strong>
+                    <span>En un archivo o mediante nuestro formulario sencillo.</span>
+                  </div>
+                </li>
+                <li class="step-item">
+                  <div class="step-number">2</div>
+                  <div class="step-content">
+                    <strong>Nosotros los publicamos en GoodMarket</strong>
+                    <span>Tu tienda aparece visible en búsquedas y listas de compras.</span>
+                  </div>
+                </li>
+                <li class="step-item">
+                  <div class="step-number">3</div>
+                  <div class="step-content">
+                    <strong>Más visitas, más ventas</strong>
+                    <span>Recibe clientes con intención de compra en tu zona.</span>
+                  </div>
+                </li>
+              </ol>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================
+         CTA / DOWNLOAD
+    ================================================ -->
+    <section class="cta-section" id="download">
+      <div class="container px-4">
+        <div class="row gx-5 align-items-center">
+
+          <div class="col-lg-5 text-center mb-5 mb-lg-0 fade-in-up">
+            <img src="assets/3.png" alt="Descarga GoodMarket" class="cta-phone-img" />
+          </div>
+
+          <div class="col-lg-7 fade-in-up delay-2">
+            <span class="section-label section-label--dark">Disponible ahora</span>
+            <h2 class="cta-title mt-3 mb-3">
+              ¡No esperes más!<br />
+              <span>Descarga la app</span>
+            </h2>
+            <p class="cta-subtitle">
+              Lleva el control de tus compras de manera fácil, rápida y totalmente
+              gratis. Disponible en Google Play.
+            </p>
+            <div class="app-badge-wrap">
+              <a href="#!" aria-label="Descargar en Google Play">
+                <img class="app-badge" src="assets/img/google-play-badge.svg" alt="Google Play" />
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================
+         FOOTER
+    ================================================ -->
+    <footer>
+      <div class="container px-4">
+        <div class="row align-items-center gy-3">
+
+          <!-- LOGO TIPOGRÁFICO — Versión footer (sobre oscuro) -->
+          <div class="col-md-4 text-center text-md-start">
+            <div class="gm-logo gm-logo--light">
+              <span class="gm-logo__icon">
+                <i class="bi bi-cart-check-fill"></i>
+              </span>
+              <span class="gm-logo__text">
+                <span class="gm-logo__good">Good</span><span class="gm-logo__market">Market</span>
+              </span>
+            </div>
+          </div>
+
+          <div class="col-md-4 text-center">
+            <p class="footer-text mb-0">&copy; GoodMarket 2025. Todos los derechos reservados.</p>
+          </div>
+
+          <div class="col-md-4 text-center text-md-end">
+            <p class="footer-text mb-0">
+              Creado con ❤️ por <span class="footer-author">Isargenys Contreras</span>
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </footer>
+
+    <!-- ================================================
+         MODAL
+    ================================================ -->
+    <div class="modal fade" id="feedbackModal" tabindex="-1"
+         aria-labelledby="feedbackModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+          <div class="modal-header modal-header-gm border-0">
+            <h5 class="modal-title" id="feedbackModalLabel">
+              <i class="bi bi-chat-text-fill me-2" style="color:var(--wheat);"></i>
+              Envíanos tu mensaje
+            </h5>
+            <button type="button" class="btn-close btn-close-white"
+                    data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          </div>
+
+          <div class="modal-body">
+            <form action="https://formsubmit.co/fcarvajal44@gmail.com" method="POST">
+              <div class="form-floating mb-3">
+                <input class="form-control" id="name" name="name" type="text"
+                       placeholder="Tu nombre..." required />
+                <label for="name">Nombre completo</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input class="form-control" id="email" name="email" type="email"
+                       placeholder="name@example.com" required />
+                <label for="email">Correo electrónico</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input class="form-control" id="phone" name="phone" type="tel"
+                       placeholder="(123) 456-7890" />
+                <label for="phone">Teléfono (opcional)</label>
+              </div>
+              <div class="form-floating mb-4">
+                <textarea class="form-control" id="message" name="message"
+                          placeholder="Escribe tu mensaje aquí..."
+                          style="height:9rem;" required></textarea>
+                <label for="message">Mensaje</label>
+              </div>
+              <input type="hidden" name="_next"    value="https://tusitio.com/gracias.html" />
+              <input type="hidden" name="_captcha" value="false" />
+              <div class="d-grid">
+                <button class="btn btn-submit" type="submit">
+                  <i class="bi bi-send-fill me-2"></i>Enviar mensaje
+                </button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      /* Navbar scroll */
+      const nav = document.getElementById('mainNav');
+      window.addEventListener('scroll', () => {
+        nav.classList.toggle('scrolled', window.scrollY > 50);
+      });
+
+      /* Fade-in on scroll */
+      const observer = new IntersectionObserver(
+        (entries) => entries.forEach(e => {
+          if (e.isIntersecting) e.target.classList.add('visible');
+        }),
+        { threshold: 0.12 }
+      );
+
+      document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+    </script>
+
+  </body>
 </html>
