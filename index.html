@@ -1,1833 +1,347 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="GoodMarket - Organiza tus compras y cuida tu cartera" />
-    <title>GoodMarket</title>
-    <link rel="icon" type="image/x-icon" href="assets/Dark_small_logo.png" />
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600;700;800&family=Newsreader:ital,wght@0,600;1,600&display=swap" rel="stylesheet" />
-
-    <style>
-      /* ================================================
-         VARIABLES DE MARCA
-      ================================================ */
-      :root {
-        --forest:    #327039;
-        --tilled:    #133020;
-        --alabaster: #F8EDD9;
-        --wheat:     #F0BE49;
-        --cherry:    #DD5C36;
-
-        --forest-light:  rgba(50, 112, 57, 0.12);
-        --forest-mid:    rgba(50, 112, 57, 0.35);
-        --tilled-light:  rgba(19, 48, 32, 0.85);
-        --wheat-light:   rgba(240, 190, 73, 0.15);
-        --cherry-light:  rgba(221, 92, 54, 0.12);
-
-        --radius:    1rem;
-        --shadow:    0 20px 60px rgba(19, 48, 32, 0.15);
-        --shadow-sm: 0 4px 20px rgba(19, 48, 32, 0.08);
-      }
-
-      *, *::before, *::after { box-sizing: border-box; }
-      html { scroll-behavior: smooth; }
-
-      body {
-        font-family: 'Mulish', sans-serif;
-        color: var(--tilled);
-        background: #fff;
-        overflow-x: hidden;
-      }
-
-      /* ================================================
-         LOGO TIPOGRÁFICO
-      ================================================ */
-      .gm-logo {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.45rem;
-        text-decoration: none;
-        user-select: none;
-      }
-
-      .gm-logo__icon {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 38px;
-        height: 38px;
-        background: var(--forest);
-        border-radius: 10px;
-        flex-shrink: 0;
-        position: relative;
-        box-shadow: 0 4px 12px rgba(50, 112, 57, 0.35);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-
-      .gm-logo__icon::after {
-        content: '';
-        position: absolute;
-        bottom: -3px;
-        right: -3px;
-        width: 11px;
-        height: 11px;
-        background: var(--wheat);
-        border-radius: 50%;
-        border: 2px solid #fff;
-      }
-
-      .gm-logo__icon i {
-        font-size: 1.15rem;
-        color: #fff;
-      }
-
-      .gm-logo:hover .gm-logo__icon {
-        transform: rotate(-6deg) scale(1.08);
-        box-shadow: 0 6px 18px rgba(50, 112, 57, 0.45);
-      }
-
-      .gm-logo__text {
-        display: flex;
-        align-items: baseline;
-        font-family: 'Newsreader', serif;
-        font-size: 1.5rem;
-        font-weight: 600;
-        letter-spacing: -0.02em;
-        line-height: 1;
-      }
-
-      .gm-logo__good   { color: var(--forest); transition: color 0.3s; }
-      .gm-logo__market {
-        color: var(--wheat);
-        text-shadow: 0 1px 2px rgba(19,48,32,0.08);
-        transition: color 0.3s;
-      }
-
-      /* Variante footer (sobre oscuro) */
-      .gm-logo--light .gm-logo__icon {
-        background: rgba(240, 190, 73, 0.15);
-        border: 1.5px solid rgba(240, 190, 73, 0.4);
-        box-shadow: none;
-      }
-      .gm-logo--light .gm-logo__icon i   { color: var(--wheat); }
-      .gm-logo--light .gm-logo__icon::after {
-        background: var(--forest);
-        border-color: var(--tilled);
-      }
-      .gm-logo--light .gm-logo__good   { color: var(--alabaster); }
-      .gm-logo--light .gm-logo__market { color: var(--wheat); text-shadow: none; }
-
-      /* ================================================
-         NAVBAR
-      ================================================ */
-      #mainNav {
-        background: rgba(255, 255, 255, 0.88);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        border-bottom: 1px solid rgba(50, 112, 57, 0.15);
-        transition: all 0.3s ease;
-        padding: 0.7rem 0;
-      }
-
-      #mainNav.scrolled {
-        background: rgba(255, 255, 255, 0.98);
-        box-shadow: var(--shadow-sm);
-      }
-
-      .nav-link {
-        font-weight: 700;
-        font-size: 0.9rem;
-        color: var(--tilled) !important;
-        padding: 0.5rem 0.85rem !important;
-        position: relative;
-        transition: color 0.3s;
-      }
-
-      .nav-link::after {
-        content: '';
-        position: absolute;
-        bottom: 0; left: 0.85rem; right: 0.85rem;
-        height: 2px;
-        background: var(--forest);
-        border-radius: 2px;
-        transform: scaleX(0);
-        transition: transform 0.3s ease;
-      }
-
-      .nav-link:hover                { color: var(--forest) !important; }
-      .nav-link:hover::after         { transform: scaleX(1); }
-
-      .btn-nav-feedback {
-        background: var(--forest);
-        color: #fff !important;
-        border: none;
-        font-weight: 700;
-        font-size: 0.85rem;
-        padding: 0.55rem 1.3rem;
-        border-radius: 50px;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 14px rgba(50, 112, 57, 0.35);
-      }
-
-      .btn-nav-feedback:hover {
-        background: var(--tilled);
-        transform: translateY(-2px);
-        box-shadow: 0 8px 22px rgba(19, 48, 32, 0.35);
-        color: var(--wheat) !important;
-      }
-
-      .navbar-toggler {
-        border: 2px solid var(--forest-mid);
-        border-radius: 0.5rem;
-        padding: 0.4rem 0.75rem;
-        font-size: 0.85rem;
-        font-weight: 700;
-        color: var(--forest);
-      }
-
-      .navbar-toggler:focus { box-shadow: 0 0 0 3px var(--forest-light); }
-
-      /* ================================================
-         HERO
-      ================================================ */
-      .masthead {
-        min-height: 100vh;
-        background:
-          radial-gradient(ellipse at 75% 30%, rgba(50,112,57,0.28) 0%, transparent 55%),
-          radial-gradient(ellipse at 15% 80%, rgba(240,190,73,0.15) 0%, transparent 50%),
-          linear-gradient(160deg, var(--tilled) 0%, #1a4028 55%, #0d2318 100%);
-        display: flex;
-        align-items: center;
-        padding: 7rem 0 4rem;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .masthead::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background-image: radial-gradient(circle, rgba(240,190,73,0.06) 1px, transparent 1px);
-        background-size: 36px 36px;
-        pointer-events: none;
-      }
-
-      .hero-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.45rem;
-        background: rgba(240, 190, 73, 0.15);
-        border: 1px solid rgba(240, 190, 73, 0.45);
-        color: var(--wheat);
-        font-size: 0.78rem;
-        font-weight: 800;
-        padding: 0.4rem 1.1rem;
-        border-radius: 50px;
-        margin-bottom: 1.5rem;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-      }
-
-      .hero-title {
-        font-family: 'Newsreader', serif;
-        font-size: clamp(3rem, 8vw, 5.5rem);
-        font-weight: 600;
-        color: var(--alabaster);
-        line-height: 1.05;
-        margin-bottom: 1.5rem;
-      }
-
-      .hero-title span { color: var(--wheat); }
-
-      .hero-subtitle {
-        font-size: 1.1rem;
-        color: rgba(248, 237, 217, 0.75);
-        font-weight: 400;
-        line-height: 1.75;
-        margin-bottom: 2.5rem;
-        max-width: 460px;
-      }
-
-      .hero-stats {
-        display: flex;
-        gap: 1.75rem;
-        margin-bottom: 2.5rem;
-        flex-wrap: wrap;
-      }
-
-      .hero-stat-number {
-        display: block;
-        font-size: 1.5rem;
-        font-weight: 800;
-        color: var(--wheat);
-      }
-
-      .hero-stat-label {
-        font-size: 0.72rem;
-        color: rgba(248,237,217,0.55);
-        text-transform: uppercase;
-        letter-spacing: 0.06em;
-      }
-
-      .hero-stat-divider {
-        width: 1px;
-        background: rgba(248,237,217,0.12);
-        align-self: stretch;
-      }
-
-      .app-badge-wrap { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
-
-      .app-badge-wrap a { transition: transform 0.3s, filter 0.3s; }
-      .app-badge-wrap a:hover { transform: translateY(-3px); filter: brightness(1.1); }
-
-      .app-badge {
-        height: 52px;
-        border-radius: 0.75rem;
-        box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-      }
-
-      .hero-image-wrapper {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .hero-glow {
-        position: absolute;
-        width: 380px; height: 380px;
-        background: radial-gradient(circle, rgba(50,112,57,0.45), transparent 68%);
-        border-radius: 50%;
-        z-index: 0;
-      }
-
-      .hero-phone-img {
-        position: relative;
-        z-index: 1;
-        max-width: 75%;
-        height: auto;
-        filter: drop-shadow(0 30px 55px rgba(0,0,0,0.5));
-        animation: float 6s ease-in-out infinite;
-      }
-
-      @keyframes float {
-        0%, 100% { transform: translateY(0); }
-        50%       { transform: translateY(-18px); }
-      }
-
-      /* ================================================
-         QUOTE
-      ================================================ */
-      .quote-section {
-        background: var(--alabaster);
-        padding: 5.5rem 0;
-      }
-
-      .quote-card {
-        background: #fff;
-        border-radius: 1.5rem;
-        padding: 3rem;
-        box-shadow: var(--shadow);
-        border: 1px solid rgba(50,112,57,0.1);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .quote-card::before {
-        content: '"';
-        position: absolute;
-        top: -1.5rem; left: 1.5rem;
-        font-size: 11rem;
-        font-family: 'Newsreader', serif;
-        color: rgba(50,112,57,0.06);
-        line-height: 1;
-        pointer-events: none;
-      }
-
-      .quote-card::after {
-        content: '';
-        position: absolute;
-        left: 0; top: 15%; bottom: 15%;
-        width: 5px;
-        background: linear-gradient(to bottom, var(--forest), var(--wheat));
-        border-radius: 0 4px 4px 0;
-      }
-
-      .quote-text {
-        font-size: clamp(1rem, 2.4vw, 1.2rem);
-        color: #4a5568;
-        font-style: italic;
-        line-height: 1.85;
-        position: relative;
-        z-index: 1;
-      }
-
-      .quote-brand {
-        font-family: 'Newsreader', serif;
-        font-size: 1.6rem;
-        font-weight: 600;
-        color: var(--forest);
-        margin-top: 1.5rem;
-      }
-
-      /* ================================================
-         SECTION HELPERS
-      ================================================ */
-      .section-label {
-        display: inline-block;
-        font-size: 0.75rem;
-        font-weight: 800;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        color: var(--forest);
-        background: var(--forest-light);
-        padding: 0.4rem 1rem;
-        border-radius: 50px;
-        margin-bottom: 1rem;
-      }
-
-      .section-label--cherry {
-        color: var(--cherry);
-        background: var(--cherry-light);
-      }
-
-      .section-label--dark {
-        color: var(--wheat);
-        background: rgba(240,190,73,0.15);
-        border: 1px solid rgba(240,190,73,0.3);
-      }
-
-      .section-title {
-        font-family: 'Newsreader', serif;
-        font-size: clamp(2rem, 5vw, 3rem);
-        font-weight: 600;
-        color: var(--tilled);
-        line-height: 1.2;
-      }
-
-      /* ================================================
-         FEATURES
-      ================================================ */
-      #features { padding: 6rem 0; background: #fff; }
-
-      .feature-card {
-        background: #fff;
-        border: 1.5px solid #e8ede8;
-        border-radius: var(--radius);
-        padding: 2rem 1.75rem;
-        transition: all 0.35s ease;
-        height: 100%;
-      }
-
-      .feature-card:hover {
-        border-color: var(--forest);
-        box-shadow: var(--shadow);
-        transform: translateY(-6px);
-      }
-
-      .feature-icon-wrap {
-        width: 58px; height: 58px;
-        background: var(--forest-light);
-        border-radius: 0.9rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 1.1rem;
-        font-size: 1.55rem;
-        color: var(--forest);
-        transition: all 0.3s ease;
-      }
-
-      .feature-card:hover .feature-icon-wrap {
-        background: var(--forest);
-        color: #fff;
-      }
-
-      .feature-card h5 {
-        font-weight: 700;
-        font-size: 1rem;
-        color: var(--tilled);
-        margin-bottom: 0.5rem;
-      }
-
-      /* .features-phone-img {
-        max-width: 78%;
-        height: auto;
-        filter: drop-shadow(0 20px 40px rgba(19,48,32,0.2));
-        animation: float 6s ease-in-out infinite;
-      } */
-
-      /* ================================================
-         ÚNETE
-      ================================================ */
-      .unete-section {
-        background: linear-gradient(180deg, var(--alabaster) 0%, #eee8d8 100%);
-        padding: 6rem 0;
-      }
-
-      .unete-title {
-        font-family: 'Newsreader', serif;
-        font-size: clamp(2rem, 4vw, 2.75rem);
-        font-weight: 600;
-        color: var(--tilled);
-        line-height: 1.2;
-      }
-
-      .unete-subtitle {
-        font-size: 1.05rem;
-        font-weight: 700;
-        color: var(--forest);
-      }
-
-      .unete-text { color: #5a6a5a; line-height: 1.8; font-size: 1rem; }
-      .gm-brand  { font-weight: 800; color: var(--forest); }
-
-      .btn-unete {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        background: var(--wheat);
-        color: var(--tilled) !important;
-        font-weight: 800;
-        font-size: 0.95rem;
-        padding: 0.85rem 1.85rem;
-        border-radius: 50px;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        box-shadow: 0 8px 24px rgba(240,190,73,0.4);
-        border: none;
-      }
-
-      .btn-unete:hover {
-        background: var(--cherry);
-        color: #fff !important;
-        transform: translateY(-3px);
-        box-shadow: 0 12px 30px rgba(221,92,54,0.38);
-      }
-
-      .benefit-card {
-        background: #fff;
-        border: 1.5px solid rgba(50,112,57,0.12);
-        border-radius: var(--radius);
-        padding: 1.5rem;
-        height: 100%;
-        transition: all 0.3s ease;
-        box-shadow: var(--shadow-sm);
-      }
-
-      .benefit-card:hover {
-        border-color: var(--forest);
-        transform: translateY(-4px);
-        box-shadow: var(--shadow);
-      }
-
-      .benefit-card h3 {
-        font-size: 0.95rem;
-        font-weight: 700;
-        color: var(--tilled);
-        margin-bottom: 0.5rem;
-      }
-
-      .benefit-card p { font-size: 0.88rem; color: #6b7a6b; margin: 0; }
-
-      .steps-box {
-        background: #fff;
-        border: 1.5px solid rgba(50,112,57,0.12);
-        border-radius: var(--radius);
-        padding: 1.75rem;
-        box-shadow: var(--shadow-sm);
-      }
-
-      .steps-list { list-style: none; padding: 0; margin: 0; }
-
-      .step-item {
-        display: flex;
-        gap: 1rem;
-        align-items: flex-start;
-        padding: 0.9rem 0;
-        border-bottom: 1px solid #eef2ee;
-      }
-
-      .step-item:last-child { border-bottom: none; }
-
-      .step-number {
-        flex-shrink: 0;
-        width: 34px; height: 34px;
-        background: var(--forest);
-        color: #fff;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 800;
-        font-size: 0.85rem;
-      }
-
-      .step-content strong {
-        display: block;
-        font-size: 0.9rem;
-        font-weight: 700;
-        color: var(--tilled);
-        margin-bottom: 0.2rem;
-      }
-
-      .step-content span { font-size: 0.82rem; color: #8a9a8a; }
-
-      /* ================================================
-         CTA / DOWNLOAD
-      ================================================ */
-      .cta-section {
-        background:
-          radial-gradient(ellipse at 80% 20%, rgba(50,112,57,0.3) 0%, transparent 55%),
-          radial-gradient(ellipse at 10% 90%, rgba(240,190,73,0.12) 0%, transparent 50%),
-          linear-gradient(155deg, var(--tilled) 0%, #1a4028 60%, #0d2318 100%);
-        padding: 5.5rem 0;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .cta-section::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background-image: radial-gradient(circle, rgba(240,190,73,0.06) 1px, transparent 1px);
-        background-size: 36px 36px;
-        pointer-events: none;
-      }
-
-      .cta-phone-img {
-        max-width: 82%;
-        height: auto;
-        filter: drop-shadow(0 25px 50px rgba(0,0,0,0.5));
-        animation: float 6s ease-in-out infinite;
-      }
-
-      .cta-title {
-        font-family: 'Newsreader', serif;
-        font-size: clamp(2.2rem, 5vw, 3.5rem);
-        font-weight: 600;
-        color: var(--alabaster);
-        line-height: 1.15;
-        margin-bottom: 1rem;
-      }
-
-      .cta-title span { color: var(--wheat); }
-
-      .cta-subtitle {
-        color: rgba(248,237,217,0.7);
-        font-size: 1.05rem;
-        line-height: 1.75;
-        margin-bottom: 2rem;
-      }
-
-      /* ================================================
-         FOOTER
-      ================================================ */
-      footer {
-        background: var(--tilled);
-        padding: 2.5rem 0;
-        border-top: 3px solid var(--forest);
-      }
-
-      .footer-text { color: rgba(248,237,217,0.5); font-size: 0.85rem; }
-      .footer-text a { color: rgba(248,237,217,0.65); text-decoration: none; transition: color 0.2s; }
-      .footer-text a:hover { color: var(--wheat); }
-      .footer-author { color: var(--wheat); font-weight: 700; }
-
-      /* ================================================
-         MODAL
-      ================================================ */
-      .modal-content {
-        border: none;
-        border-radius: 1.25rem;
-        overflow: hidden;
-        box-shadow: 0 30px 80px rgba(19,48,32,0.2);
-      }
-
-      .modal-header-gm {
-        background: linear-gradient(135deg, var(--tilled), var(--forest));
-        padding: 1.5rem 1.75rem;
-        border-bottom: none;
-      }
-
-      .modal-header-gm .modal-title {
-        font-weight: 700;
-        font-size: 1.1rem;
-        color: var(--alabaster);
-      }
-
-      .modal-body { padding: 2rem; background: #fff; }
-
-      .form-floating .form-control,
-      .form-floating textarea {
-        border: 1.5px solid #dde8dd;
-        border-radius: 0.75rem;
-        font-size: 0.9rem;
-        transition: border-color 0.3s, box-shadow 0.3s;
-      }
-
-      .form-floating .form-control:focus,
-      .form-floating textarea:focus {
-        border-color: var(--forest);
-        box-shadow: 0 0 0 3px var(--forest-light);
-      }
-
-      .btn-submit {
-        background: var(--forest);
-        border: none;
-        color: #fff;
-        font-weight: 700;
-        border-radius: 50px;
-        padding: 0.85rem;
-        font-size: 1rem;
-        transition: all 0.3s ease;
-        box-shadow: 0 6px 20px rgba(50,112,57,0.35);
-      }
-
-      .btn-submit:hover {
-        background: var(--tilled);
-        transform: translateY(-2px);
-        box-shadow: 0 10px 28px rgba(19,48,32,0.35);
-        color: var(--wheat);
-      }
-
-      /* ================================================
-         ANIMACIONES
-      ================================================ */
-      .fade-in-up {
-        opacity: 0;
-        transform: translateY(28px);
-        transition: opacity 0.65s ease, transform 0.65s ease;
-      }
-
-      .fade-in-up.visible { opacity: 1; transform: translateY(0); }
-
-      .delay-1 { transition-delay: 0.1s; }
-      .delay-2 { transition-delay: 0.2s; }
-      .delay-3 { transition-delay: 0.3s; }
-
-      /* ================================================
-         RESPONSIVE
-      ================================================ */
-      @media (max-width: 991.98px) {
-        .masthead { padding: 6rem 0 3.5rem; text-align: center; }
-        .hero-subtitle  { max-width: 100%; }
-        .hero-stats     { justify-content: center; }
-        .app-badge-wrap { justify-content: center; }
-        .hero-phone-img     { max-width: 55%; margin-top: 2.5rem; }
-        .features-phone-img { max-width: 52%; margin: 1.5rem auto; display: block; }
-        .cta-phone-img      { max-width: 55%; margin: 0 auto 2.5rem; display: block; }
-      }
-
-      @media (max-width: 575.98px) {
-        .hero-phone-img { max-width: 76%; }
-        .cta-phone-img  { max-width: 72%; }
-        .quote-card     { padding: 2rem 1.5rem; }
-      }
-
-      /* ================================================
-   PHONE MOCKUP
-================================================ */
-.phone-mockup {
-  position: relative;
-  display: inline-block;
-  animation: float 6s ease-in-out infinite;
-}
-
-/* Marco del teléfono */
-.phone-mockup__frame {
-  position: relative;
-  width: 220px;
-  height: 440px;
-  background: linear-gradient(145deg, #1a2a1a, #0d1f0d);
-  border-radius: 36px;
-  padding: 14px 10px;
-  margin: 0 auto;
-
-  /* Borde con brillo */
-  box-shadow:
-    0 0 0 2px #2a4a2a,
-    0 0 0 4px #1a3a1a,
-    inset 0 0 0 1px rgba(50, 112, 57, 0.3),
-    0 30px 70px rgba(19, 48, 32, 0.55),
-    0 10px 30px rgba(0, 0, 0, 0.4);
-
-  /* Botones laterales decorativos */
-  overflow: visible;
-}
-
-/* Botones laterales izquierda (volumen) */
-.phone-mockup__frame::before {
-  content: '';
-  position: absolute;
-  left: -5px;
-  top: 80px;
-  width: 4px;
-  height: 28px;
-  background: linear-gradient(to bottom, #2a4a2a, #1a3a1a);
-  border-radius: 3px 0 0 3px;
-  box-shadow:
-    0 36px 0 #2a4a2a,
-    0 72px 0 #2a4a2a;
-}
-
-/* Botón lateral derecha (encendido) */
-.phone-mockup__frame::after {
-  content: '';
-  position: absolute;
-  right: -5px;
-  top: 110px;
-  width: 4px;
-  height: 44px;
-  background: linear-gradient(to bottom, #2a4a2a, #1a3a1a);
-  border-radius: 0 3px 3px 0;
-}
-
-/* Altavoz superior */
-.phone-mockup__speaker {
-  width: 48px;
-  height: 5px;
-  background: #0a150a;
-  border-radius: 3px;
-  margin: 0 auto 10px;
-  box-shadow: inset 0 1px 2px rgba(0,0,0,0.8);
-  position: relative;
-  z-index: 2;
-}
-
-/* Cámara frontal */
-.phone-mockup__camera {
-  width: 8px;
-  height: 8px;
-  background: radial-gradient(circle at 35% 35%, #1a3a4a, #050e10);
-  border-radius: 50%;
-  margin: -6px auto 8px;
-  box-shadow:
-    0 0 0 1.5px #0a1f2a,
-    inset 0 0 3px rgba(6, 182, 212, 0.15);
-  position: relative;
-  z-index: 2;
-}
-
-/* Pantalla */
-.phone-mockup__screen {
-  width: 100%;
-  /* Altura = frame - speaker - camera - home - paddings */
-  height: 358px;
-  border-radius: 20px;
-  overflow: hidden;
-  background: #000;
-  position: relative;
-
-  /* Reflejo sutil en pantalla */
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
-}
-
-.phone-mockup__screen img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-  display: block;
-  transition: transform 6s ease;
-}
-
-/* Scroll suave de la imagen al hacer hover */
-.phone-mockup:hover .phone-mockup__screen img {
-  transform: translateY(calc(-100% + 358px));
-}
-
-/* Botón home inferior */
-.phone-mockup__home {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: linear-gradient(145deg, #1e3a1e, #0d1f0d);
-  border: 2px solid #2a4a2a;
-  margin: 10px auto 0;
-  position: relative;
-  box-shadow:
-    0 2px 6px rgba(0,0,0,0.5),
-    inset 0 1px 2px rgba(50, 112, 57, 0.2);
-}
-
-/* Cuadrado interior del botón home */
-.phone-mockup__home::after {
-  content: '';
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 14px;
-  height: 14px;
-  border: 1.5px solid rgba(50, 112, 57, 0.5);
-  border-radius: 4px;
-}
-
-/* Brillo lateral del teléfono */
-.phone-mockup__shine {
-  position: absolute;
-  top: 8%;
-  left: 6px;
-  width: 6px;
-  height: 55%;
-  background: linear-gradient(
-    to bottom,
-    rgba(255,255,255,0.08),
-    rgba(255,255,255,0.01)
-  );
-  border-radius: 3px;
-  pointer-events: none;
-}
-
-/* ── Responsive ── */
-@media (max-width: 991.98px) {
-  .phone-mockup__frame {
-    width: 190px;
-    height: 380px;
+<head>
+  <!-- ====== METAS BÁSICAS ====== -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- ====== SEO PRIMARIO ====== -->
+  <title>GoodMarket — Organiza tus compras, compara precios y ahorra</title>
+  <meta name="description" content="GoodMarket es la app gratuita que te ayuda a crear listas de compras, comparar precios entre supermercados y ahorrar dinero cada semana. Disponible en Android." />
+  <meta name="keywords" content="lista de compras, comparar precios supermercados, app compras gratis, ahorrar en supermercado, GoodMarket, organizar compras, precios supermercado, app Android compras" />
+  <meta name="author" content="Isargenys Contreras" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <link rel="canonical" href="https://www.goodmarket.app/" />
+
+  <!-- ====== IDIOMA / REGIÓN ====== -->
+  <meta name="language" content="es" />
+  <meta name="geo.region" content="DO" />
+  <link rel="alternate" hreflang="es" href="https://www.goodmarket.app/" />
+  <link rel="alternate" hreflang="x-default" href="https://www.goodmarket.app/" />
+
+  <!-- ====== OPEN GRAPH (Facebook, WhatsApp, etc.) ====== -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="GoodMarket" />
+  <meta property="og:title" content="GoodMarket — Organiza tus compras y ahorra" />
+  <meta property="og:description" content="Crea listas de compras, compara precios entre supermercados y ahorra dinero cada semana. 100% gratis." />
+  <meta property="og:url" content="https://www.goodmarket.app/" />
+  <meta property="og:image" content="https://www.goodmarket.app/assets/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="es_ES" />
+
+  <!-- ====== TWITTER CARD ====== -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="GoodMarket — Organiza tus compras y ahorra" />
+  <meta name="twitter:description" content="App gratuita para crear listas de compras y comparar precios de supermercados." />
+  <meta name="twitter:image" content="https://www.goodmarket.app/assets/og-image.jpg" />
+
+  <!-- ====== FAVICON ====== -->
+  <link rel="icon" type="image/png" href="assets/Dark_small_logo.png" />
+  <link rel="apple-touch-icon" href="assets/Dark_small_logo.png" />
+
+  <!-- ====== PRECONNECT & FONTS ====== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600;700;800&family=Newsreader:ital,wght@0,600;1,600&display=swap" rel="stylesheet" />
+
+  <!-- ====== CSS ====== -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+  <link href="./css/styles.css" rel="stylesheet" />
+
+  <!-- ====== DATOS ESTRUCTURADOS (JSON-LD) ====== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "GoodMarket",
+        "url": "https://www.goodmarket.app",
+        "logo": "https://www.goodmarket.app/assets/Dark_small_logo.png",
+        "description": "App gratuita para crear listas de compras y comparar precios de supermercados.",
+        "sameAs": [
+          "https://play.google.com/store/apps/details?id=com.felixdev.goodmarketlist"
+        ]
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "GoodMarket",
+        "operatingSystem": "Android",
+        "applicationCategory": "ShoppingApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5.0",
+          "ratingCount": "50"
+        },
+        "description": "Organiza tus compras, compara precios entre supermercados y ahorra dinero.",
+        "downloadUrl": "https://play.google.com/store/apps/details?id=com.felixdev.goodmarketlist&hl=es_419",
+        "screenshot": "https://www.goodmarket.app/assets/1.png"
+      },
+      {
+        "@type": "WebSite",
+        "name": "GoodMarket",
+        "url": "https://www.goodmarket.app",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://www.goodmarket.app/?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
+    ]
   }
+  </script>
+</head>
 
-  .phone-mockup__screen {
-    height: 308px;
-  }
+<body>
 
-  .phone-mockup:hover .phone-mockup__screen img {
-    transform: translateY(calc(-100% + 308px));
-  }
-}
+  <!-- ====== NAVBAR ====== -->
+  <nav class="navbar navbar-expand-lg fixed-top" id="mainNav" aria-label="Navegación principal">
+    <div class="container">
+      <a class="navbar-brand gm-logo" href="index.html" aria-label="GoodMarket - Inicio">
+        <span class="gm-logo__icon"><i class="bi bi-cart-check-fill"></i></span>
+        <span class="gm-logo__text">
+          <span class="gm-logo__good">Good</span><span class="gm-logo__market">Market</span>
+        </span>
+      </a>
 
-@media (max-width: 575.98px) {
-  .phone-mockup__frame {
-    width: 175px;
-    height: 352px;
-  }
+      <button class="navbar-toggler" type="button"
+              data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+              aria-controls="navbarResponsive" aria-expanded="false" aria-label="Abrir menú">
+        Menú <i class="bi bi-list ms-1"></i>
+      </button>
 
-  .phone-mockup__screen {
-    height: 285px;
-  }
-
-  .phone-mockup:hover .phone-mockup__screen img {
-    transform: translateY(calc(-100% + 285px));
-  }
-}
-/* ================================================
-   BANNER iOS — LISTA DE ESPERA
-================================================ */
-.ios-banner {
-  background:
-    radial-gradient(ellipse at 20% 50%, rgba(50,112,57,0.18) 0%, transparent 55%),
-    radial-gradient(ellipse at 85% 20%, rgba(240,190,73,0.12) 0%, transparent 50%),
-    linear-gradient(160deg, #0a1f10 0%, var(--tilled) 50%, #0d1a0a 100%);
-  padding: 5rem 0;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Orbes decorativos de fondo */
-.ios-banner__orb {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-  filter: blur(60px);
-  opacity: 0.35;
-}
-
-.ios-banner__orb--1 {
-  width: 400px;
-  height: 400px;
-  background: var(--forest);
-  top: -100px;
-  left: -100px;
-}
-
-.ios-banner__orb--2 {
-  width: 300px;
-  height: 300px;
-  background: var(--wheat);
-  bottom: -80px;
-  right: -60px;
-  opacity: 0.18;
-}
-
-.ios-banner__orb--3 {
-  width: 200px;
-  height: 200px;
-  background: var(--cherry);
-  top: 40%;
-  right: 15%;
-  opacity: 0.12;
-}
-
-/* Tarjeta principal */
-.ios-banner__card {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(248, 237, 217, 0.1);
-  border-radius: 2rem;
-  padding: 3.5rem;
-  text-align: center;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow:
-    0 0 0 1px rgba(50, 112, 57, 0.15),
-    0 40px 80px rgba(0, 0, 0, 0.35),
-    inset 0 1px 0 rgba(255,255,255,0.06);
-  position: relative;
-  overflow: hidden;
-}
-
-/* Línea top degradada */
-.ios-banner__card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 10%; right: 10%;
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--forest),
-    var(--wheat),
-    var(--forest),
-    transparent
-  );
-  border-radius: 1px;
-}
-
-/* Badge */
-.ios-banner__badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  background: rgba(240, 190, 73, 0.12);
-  border: 1px solid rgba(240, 190, 73, 0.35);
-  color: var(--wheat);
-  font-size: 0.75rem;
-  font-weight: 800;
-  padding: 0.4rem 1.1rem;
-  border-radius: 50px;
-  margin-bottom: 1.75rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  animation: pulse-badge 2.5s ease-in-out infinite;
-}
-
-@keyframes pulse-badge {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(240,190,73,0); }
-  50%       { box-shadow: 0 0 0 6px rgba(240,190,73,0.1); }
-}
-
-/* Ícono Apple grande */
-.ios-banner__apple-icon {
-  width: 80px;
-  height: 80px;
-  background: linear-gradient(145deg, rgba(50,112,57,0.25), rgba(50,112,57,0.1));
-  border: 1.5px solid rgba(50,112,57,0.3);
-  border-radius: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 1.5rem;
-  font-size: 2.2rem;
-  color: var(--alabaster);
-  box-shadow: 0 8px 24px rgba(50,112,57,0.2);
-  transition: transform 0.4s ease;
-}
-
-.ios-banner__card:hover .ios-banner__apple-icon {
-  transform: scale(1.08) rotate(-4deg);
-}
-
-/* Título */
-.ios-banner__title {
-  font-family: 'Newsreader', serif;
-  font-size: clamp(1.75rem, 4vw, 2.75rem);
-  font-weight: 600;
-  color: var(--alabaster);
-  line-height: 1.2;
-  margin-bottom: 1rem;
-}
-
-.ios-banner__title span {
-  color: var(--wheat);
-}
-
-/* Descripción */
-.ios-banner__desc {
-  color: rgba(248, 237, 217, 0.65);
-  font-size: 1rem;
-  line-height: 1.75;
-  max-width: 520px;
-  margin: 0 auto 2rem;
-}
-
-.ios-banner__desc strong {
-  color: var(--alabaster);
-  font-weight: 700;
-}
-
-/* Perks / beneficios */
-.ios-banner__perks {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-  margin-bottom: 2.25rem;
-}
-
-.ios-banner__perk {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: rgba(248,237,217,0.7);
-}
-
-.ios-banner__perk i {
-  color: var(--wheat);
-  font-size: 0.9rem;
-}
-
-/* Formulario */
-.ios-banner__form {
-  max-width: 520px;
-  margin: 0 auto;
-}
-
-.ios-banner__input-group {
-  display: flex;
-  gap: 0.75rem;
-  margin-bottom: 0.75rem;
-}
-
-.ios-banner__input-wrap {
-  flex: 1;
-  position: relative;
-  min-width: 0;
-}
-
-.ios-banner__input-icon {
-  position: absolute;
-  left: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  color: rgba(248,237,217,0.35);
-  font-size: 0.9rem;
-  pointer-events: none;
-}
-
-.ios-banner__input {
-  width: 100%;
-  height: 52px;
-  background: rgba(255,255,255,0.07);
-  border: 1.5px solid rgba(248,237,217,0.15);
-  border-radius: 50px;
-  padding: 0 1.1rem 0 2.75rem;
-  font-family: 'Mulish', sans-serif;
-  font-size: 0.9rem;
-  color: var(--alabaster);
-  transition: all 0.3s ease;
-  outline: none;
-}
-
-.ios-banner__input::placeholder {
-  color: rgba(248,237,217,0.3);
-}
-
-.ios-banner__input:focus {
-  border-color: var(--forest);
-  background: rgba(50,112,57,0.1);
-  box-shadow: 0 0 0 3px rgba(50,112,57,0.2);
-}
-
-/* Botón CTA principal */
-.ios-banner__btn {
-  display: inline-flex;
-  align-items: center;
-  white-space: nowrap;
-  height: 52px;
-  background: var(--wheat);
-  color: var(--tilled);
-  font-family: 'Mulish', sans-serif;
-  font-weight: 800;
-  font-size: 0.88rem;
-  padding: 0 1.5rem;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 6px 22px rgba(240,190,73,0.4);
-  flex-shrink: 0;
-}
-
-.ios-banner__btn:hover {
-  background: var(--cherry);
-  color: #fff;
-  transform: translateY(-3px);
-  box-shadow: 0 10px 28px rgba(221,92,54,0.45);
-}
-
-.ios-banner__btn:hover .ios-banner__btn-arrow {
-  transform: translateX(4px);
-}
-
-.ios-banner__btn-arrow {
-  transition: transform 0.3s ease;
-}
-
-/* Mensaje privacidad */
-.ios-banner__privacy {
-  font-size: 0.78rem;
-  color: rgba(248,237,217,0.3);
-  margin: 0;
-}
-
-.ios-banner__privacy i {
-  color: var(--forest);
-}
-
-/* Contador */
-.ios-banner__counter {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  margin-top: 2rem;
-  padding-top: 1.75rem;
-  border-top: 1px solid rgba(248,237,217,0.07);
-}
-
-.ios-banner__avatars {
-  display: flex;
-}
-
-.ios-banner__avatar {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  border: 2px solid rgba(19,48,32,0.8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.7rem;
-  font-weight: 800;
-  color: #fff;
-  margin-left: -8px;
-}
-
-.ios-banner__avatars .ios-banner__avatar:first-child {
-  margin-left: 0;
-}
-
-.ios-banner__counter-text {
-  font-size: 0.82rem;
-  color: rgba(248,237,217,0.45);
-}
-
-.ios-banner__counter-text strong {
-  color: var(--wheat);
-  font-size: 0.95rem;
-}
-
-/* Responsive */
-@media (max-width: 575.98px) {
-  .ios-banner__card {
-    padding: 2.5rem 1.5rem;
-  }
-
-  .ios-banner__input-group {
-    flex-direction: column;
-  }
-
-  .ios-banner__btn {
-    width: 100%;
-    justify-content: center;
-    height: 50px;
-  }
-
-  .ios-banner__input {
-    height: 50px;
-  }
-
-  .ios-banner__perks {
-    gap: 1rem;
-  }
-}
-    </style>
-  </head>
-
-  <body id="page-top">
-
-    <!-- ================================================
-         NAVBAR
-    ================================================ -->
-    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
-      <div class="container">
-
-        <!-- LOGO TIPOGRÁFICO — Versión navbar (sobre blanco) -->
-        <a class="navbar-brand gm-logo" href="#page-top" aria-label="GoodMarket">
-          <span class="gm-logo__icon">
-            <i class="bi bi-cart-check-fill"></i>
-          </span>
-          <span class="gm-logo__text">
-            <span class="gm-logo__good">Good</span><span class="gm-logo__market">Market</span>
-          </span>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ms-auto me-3 my-3 my-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="caracteristicas.html">Características</a></li>
+          <li class="nav-item"><a class="nav-link" href="descarga.html">Descárgala</a></li>
+          <li class="nav-item"><a class="nav-link" href="unete.html">Supermercados</a></li>
+          <li class="nav-item"><a class="nav-link" href="ios.html">iOS</a></li>
+        </ul>
+        <a class="btn-nav-feedback" href="contacto.html">
+          <i class="bi bi-chat-text-fill me-2"></i>Contáctanos
         </a>
-
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarResponsive"
-          aria-controls="navbarResponsive"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          Menú <i class="bi bi-list ms-1"></i>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ms-auto me-3 my-3 my-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" href="#features">Características</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link me-2" href="#download">Descárgala</a>
-            </li>
-          </ul>
-          <button
-            class="btn btn-nav-feedback"
-            data-bs-toggle="modal"
-            data-bs-target="#feedbackModal"
-          >
-            <i class="bi bi-chat-text-fill me-2"></i>Envía tu comentario
-          </button>
-        </div>
-
-      </div>
-    </nav>
-
-    <!-- ================================================
-         HERO
-    ================================================ -->
-    <header class="masthead">
-      <div class="container px-4 px-lg-5">
-        <div class="row gx-5 align-items-center">
-
-          <div class="col-lg-6 fade-in-up">
-            <div class="hero-badge">
-              <i class="bi bi-patch-check-fill"></i>
-              Nuevo · Disponible en Android
-            </div>
-
-            <h1 class="hero-title">
-              Good<span>Market</span>
-            </h1>
-
-            <p class="hero-subtitle">
-              La app que mantiene tus compras organizadas, tus listas bajo control
-              y tu cartera bien cuidada. 🛒
-            </p>
-
-            <div class="hero-stats">
-              <div class="hero-stat">
-                <span class="hero-stat-number">100%</span>
-                <span class="hero-stat-label">Gratis</span>
-              </div>
-              <div class="hero-stat-divider"></div>
-              <div class="hero-stat">
-                <span class="hero-stat-number">+50</span>
-                <span class="hero-stat-label">Productos</span>
-              </div>
-              <div class="hero-stat-divider"></div>
-              <div class="hero-stat">
-                <span class="hero-stat-number">⭐ 5.0</span>
-                <span class="hero-stat-label">Rating</span>
-              </div>
-            </div>
-
-            <div class="app-badge-wrap">
-              <a href="https://play.google.com/store/apps/details?id=com.felixdev.goodmarketlist&hl=es_419" aria-label="Descargar en Google Play">
-                <img class="app-badge" src="assets/img/google-play-badge.svg" alt="Google Play" />
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-6 text-center fade-in-up delay-2">
-            <div class="hero-image-wrapper">
-              <div class="hero-glow"></div>
-              <img src="assets/1.png" alt="GoodMarket App Mockup" class="hero-phone-img" />
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </header>
-
-
-
-    <!-- ================================================
-         QUOTE
-    ================================================ -->
-    <section class="quote-section">
-      <div class="container px-4">
-        <div class="row justify-content-center">
-          <div class="col-lg-8 col-xl-7 fade-in-up">
-            <div class="quote-card text-center">
-              <p class="quote-text">
-                Con GoodMarket puedes ordenar tus compras por categorías para una mayor
-                comodidad y consultar en qué supermercado te sale más económico cada producto.
-              </p>
-              <div class="quote-brand">GoodMarket 🌿</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ================================================
-         FEATURES
-    ================================================ -->
-    <section id="features">
-      <div class="container px-4">
-
-        <div class="text-center mb-5 fade-in-up">
-          <span class="section-label">Funcionalidades</span>
-          <h2 class="section-title mt-2">Nuestras Características</h2>
-          <p class="text-muted mt-3 mx-auto" style="max-width:500px;">
-            Todo lo que necesitas para comprar de forma inteligente, organizada y económica.
-          </p>
-        </div>
-
-        <div class="row gx-4 gy-4 align-items-center">
-
-          <div class="col-lg-4">
-            <div class="row gy-4">
-              <div class="col-12 fade-in-up delay-1">
-                <div class="feature-card">
-                  <div class="feature-icon-wrap"><i class="bi bi-list-check"></i></div>
-                  <h5>Gestión de Listas</h5>
-                  <p class="text-muted small mb-0">
-                    Crea, edita y organiza listas de compras personalizadas con total facilidad.
-                  </p>
-                </div>
-              </div>
-              <div class="col-12 fade-in-up delay-2">
-                <div class="feature-card">
-                  <div class="feature-icon-wrap"><i class="bi bi-phone"></i></div>
-                  <h5>Interfaz Intuitiva</h5>
-                  <p class="text-muted small mb-0">
-                    Diseño limpio con navegación fluida, iconos claros y funciones accesibles.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-                  <div class="col-lg-4 text-center fade-in-up">
-          <div class="phone-mockup">
-            <div class="phone-mockup__frame">
-              <!-- Altavoz -->
-              <div class="phone-mockup__speaker"></div>
-              <!-- Cámara -->
-              <div class="phone-mockup__camera"></div>
-              <!-- Pantalla con la imagen -->
-              <div class="phone-mockup__screen">
-                <img src="assets/6343.jpg" alt="GoodMarket Features" />
-              </div>
-              <!-- Botón home -->
-              <div class="phone-mockup__home"></div>
-            </div>
-            <!-- Brillo decorativo -->
-            <div class="phone-mockup__shine"></div>
-          </div>
-        </div>
-
-          <div class="col-lg-4">
-            <div class="row gy-4">
-              <div class="col-12 fade-in-up delay-1">
-                <div class="feature-card">
-                  <div class="feature-icon-wrap"><i class="bi bi-search"></i></div>
-                  <h5>Búsqueda de Precios</h5>
-                  <p class="text-muted small mb-0">
-                    Encuentra productos y compara precios entre supermercados al instante.
-                  </p>
-                </div>
-              </div>
-              <div class="col-12 fade-in-up delay-2">
-                <div class="feature-card">
-                  <div class="feature-icon-wrap"><i class="bi bi-cart-check"></i></div>
-                  <h5>Historial de Compras</h5>
-                  <p class="text-muted small mb-0">
-                    Registra tus compras y lleva un seguimiento detallado de tus gastos.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-        <!-- ================================================
-     BANNER iOS — LISTA DE ESPERA
-================================================ -->
-<section class="ios-banner">
-  <!-- Partículas decorativas -->
-  <div class="ios-banner__orb ios-banner__orb--1"></div>
-  <div class="ios-banner__orb ios-banner__orb--2"></div>
-  <div class="ios-banner__orb ios-banner__orb--3"></div>
-
-  <div class="container px-4 position-relative" style="z-index:2;">
-    <div class="row justify-content-center">
-      <div class="col-lg-9 col-xl-8">
-
-        <div class="ios-banner__card fade-in-up">
-
-          <!-- Badge superior -->
-          <div class="ios-banner__badge">
-            <i class="bi bi-apple"></i>
-            Próximamente en iOS
-          </div>
-
-          <!-- Ícono grande Apple -->
-          <div class="ios-banner__apple-icon">
-            <i class="bi bi-apple"></i>
-          </div>
-
-          <!-- Título -->
-          <h2 class="ios-banner__title">
-            GoodMarket llega a <span>iPhone</span>
-          </h2>
-
-          <!-- Descripción -->
-          <p class="ios-banner__desc">
-            Estamos trabajando para traerte la mejor experiencia de compras inteligente
-            en iOS. Regístrate ahora y sé de los <strong>primeros en acceder</strong>
-            cuando lancemos en la App Store. 🎉
-          </p>
-
-          <!-- Beneficios rápidos -->
-          <div class="ios-banner__perks">
-            <div class="ios-banner__perk">
-              <i class="bi bi-lightning-charge-fill"></i>
-              <span>Acceso anticipado</span>
-            </div>
-            <div class="ios-banner__perk">
-              <i class="bi bi-bell-fill"></i>
-              <span>Notificación de lanzamiento</span>
-            </div>
-            <div class="ios-banner__perk">
-              <i class="bi bi-gift-fill"></i>
-              <span>Beneficios exclusivos</span>
-            </div>
-          </div>
-
-          <!-- Formulario inline -->
-          <form
-            class="ios-banner__form"
-            action="https://formsubmit.co/fcarvajal44@gmail.com"
-            method="POST"
-            id="iosWaitlistForm"
-          >
-            <input type="hidden" name="_subject" value="Nueva inscripción lista de espera iOS - GoodMarket" />
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_next"    value="#" />
-            <input type="hidden" name="origen"   value="Banner iOS Landing" />
-
-            <div class="ios-banner__input-group">
-              <div class="ios-banner__input-wrap">
-                <i class="bi bi-envelope-fill ios-banner__input-icon"></i>
-                <input
-                  type="email"
-                  name="email"
-                  class="ios-banner__input"
-                  placeholder="tucorreo@ejemplo.com"
-                  required
-                  autocomplete="email"
-                />
-              </div>
-              <button type="submit" class="ios-banner__btn">
-                <i class="bi bi-apple me-2"></i>
-                Regístrate aquí
-                <i class="bi bi-arrow-right ms-2 ios-banner__btn-arrow"></i>
-              </button>
-            </div>
-
-            <!-- Mensaje de privacidad -->
-            <p class="ios-banner__privacy">
-              <i class="bi bi-shield-check me-1"></i>
-              Sin spam. Solo te avisamos cuando esté disponible.
-            </p>
-          </form>
-
-          <!-- Contador animado de inscritos (decorativo) -->
-          <div class="ios-banner__counter">
-            <div class="ios-banner__avatars">
-              <div class="ios-banner__avatar" style="background: var(--forest);">I</div>
-              <div class="ios-banner__avatar" style="background: var(--cherry);">M</div>
-              <div class="ios-banner__avatar" style="background: #6366f1;">A</div>
-              <div class="ios-banner__avatar" style="background: var(--wheat); color: var(--tilled);">+</div>
-            </div>
-            <span class="ios-banner__counter-text">
-              <strong id="waitlistCount">127</strong> personas ya están en la lista
-            </span>
-          </div>
-
-        </div>
       </div>
     </div>
-  </div>
-</section>
+  </nav>
 
-    <!-- ================================================
-         ÚNETE
-    ================================================ -->
-    <section class="unete-section">
-      <div class="container px-4">
-        <div class="row gx-5 gy-5 align-items-center">
+  <!-- ====== HERO ====== -->
+  <header class="masthead">
+    <div class="container px-4 px-lg-5">
+      <div class="row gx-5 align-items-center">
 
-          <div class="col-lg-5 fade-in-up">
-            <span class="section-label">Para supermercados</span>
-            <h2 class="unete-title mt-3 mb-2">Súmate a GoodMarket</h2>
-            <p class="unete-subtitle mb-3">Haz que más personas descubran tu supermercado</p>
-            <p class="unete-text mb-4">
-              En <span class="gm-brand">GoodMarket</span> ayudamos a las familias a
-              ahorrar comparando precios y armando sus listas de compras.
-              Queremos que tu supermercado también forme parte de esta experiencia.
-            </p>
-            <a class="btn-unete" href="https://wa.me/+18494528882?text=Quieres%20unirte%20a%20GoodMartek%20">
-              🚀 Quiero mi supermercado en GoodMarket
+        <div class="col-lg-6 fade-in-up">
+          <div class="hero-badge">
+            <i class="bi bi-patch-check-fill"></i>
+            Nuevo · Disponible en Android
+          </div>
+
+          <h1 class="hero-title">Good<span>Market</span></h1>
+
+          <p class="hero-subtitle">
+            La app que mantiene tus compras organizadas, tus listas bajo control
+            y tu cartera bien cuidada. 🛒
+          </p>
+
+          <div class="hero-stats" aria-label="Estadísticas de GoodMarket">
+            <div class="hero-stat">
+              <span class="hero-stat-number">100%</span>
+              <span class="hero-stat-label">Gratis</span>
+            </div>
+            <div class="hero-stat-divider" role="separator"></div>
+            <div class="hero-stat">
+              <span class="hero-stat-number">+50</span>
+              <span class="hero-stat-label">Productos</span>
+            </div>
+            <div class="hero-stat-divider" role="separator"></div>
+            <div class="hero-stat">
+              <span class="hero-stat-number">⭐ 5.0</span>
+              <span class="hero-stat-label">Rating</span>
+            </div>
+          </div>
+
+          <div class="app-badge-wrap">
+            <a href="https://play.google.com/store/apps/details?id=com.felixdev.goodmarketlist&hl=es_419"
+               target="_blank" rel="noopener noreferrer"
+               aria-label="Descargar GoodMarket en Google Play Store">
+              <img class="app-badge" src="assets/img/google-play-badge.svg"
+                   alt="Disponible en Google Play - Descargar GoodMarket gratis"
+                   width="180" height="52" loading="eager" />
             </a>
           </div>
-
-          <div class="col-lg-7 fade-in-up delay-2">
-            <div class="row gx-3 gy-3 mb-4">
-              <div class="col-sm-4">
-                <div class="benefit-card">
-                  <h3>🌟 Más visibilidad</h3>
-                  <p>Tus precios llegan a compradores que ya buscan dónde comprar.</p>
-                </div>
-              </div>
-              <div class="col-sm-4">
-                <div class="benefit-card">
-                  <h3>🛍️ Más clientes</h3>
-                  <p>Conecta con personas listas para decidir y convertir.</p>
-                </div>
-              </div>
-              <div class="col-sm-4">
-                <div class="benefit-card">
-                  <h3>💸 Más ventas</h3>
-                  <p>Destaca frente a la competencia con tus mejores ofertas.</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="steps-box">
-              <p class="fw-bold small text-uppercase mb-3"
-                 style="color:var(--forest); letter-spacing:.07em;">
-                ¿Cómo funciona?
-              </p>
-              <ol class="steps-list">
-                <li class="step-item">
-                  <div class="step-number">1</div>
-                  <div class="step-content">
-                    <strong>Compártenos tus precios y ofertas</strong>
-                    <span>En un archivo o mediante nuestro formulario sencillo.</span>
-                  </div>
-                </li>
-                <li class="step-item">
-                  <div class="step-number">2</div>
-                  <div class="step-content">
-                    <strong>Nosotros los publicamos en GoodMarket</strong>
-                    <span>Tu tienda aparece visible en búsquedas y listas de compras.</span>
-                  </div>
-                </li>
-                <li class="step-item">
-                  <div class="step-number">3</div>
-                  <div class="step-content">
-                    <strong>Más visitas, más ventas</strong>
-                    <span>Recibe clientes con intención de compra en tu zona.</span>
-                  </div>
-                </li>
-              </ol>
-            </div>
-          </div>
-
         </div>
-      </div>
-    </section>
 
-    <!-- ================================================
-         CTA / DOWNLOAD
-    ================================================ -->
-    <section class="cta-section" id="download">
-      <div class="container px-4">
-        <div class="row gx-5 align-items-center">
-
-          <div class="col-lg-5 text-center mb-5 mb-lg-0 fade-in-up">
-            <img src="assets/6344.jpg" alt="Descarga GoodMarket" class="cta-phone-img" />
+        <div class="col-lg-6 text-center fade-in-up delay-2">
+          <div class="hero-image-wrapper">
+            <div class="hero-glow" aria-hidden="true"></div>
+            <img src="assets/1.png"
+                 alt="Captura de pantalla de la app GoodMarket mostrando la lista de compras organizada por categorías"
+                 class="hero-phone-img" width="400" height="800" loading="eager" />
           </div>
+        </div>
 
-          <div class="col-lg-7 fade-in-up delay-2">
-            <span class="section-label section-label--dark">Disponible ahora</span>
-            <h2 class="cta-title mt-3 mb-3">
-              ¡No esperes más!<br />
-              <span>Descarga la app</span>
-            </h2>
-            <p class="cta-subtitle">
-              Lleva el control de tus compras de manera fácil, rápida y totalmente
-              gratis. Disponible en Google Play.
+      </div>
+    </div>
+  </header>
+
+  <!-- ====== QUOTE ====== -->
+  <section class="quote-section" aria-label="Descripción de GoodMarket">
+    <div class="container px-4">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 col-xl-7 fade-in-up">
+          <blockquote class="quote-card text-center">
+            <p class="quote-text">
+              Con GoodMarket puedes ordenar tus compras por categorías para una mayor
+              comodidad y consultar en qué supermercado te sale más económico cada producto.
             </p>
-            <div class="app-badge-wrap">
-              <a href="https://play.google.com/store/apps/details?id=com.felixdev.goodmarketlist&hl=es_419" aria-label="Descargar en Google Play">
-                <img class="app-badge" src="assets/img/google-play-badge.svg" alt="Google Play" />
-              </a>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ================================================
-         FOOTER
-    ================================================ -->
-    <footer>
-      <div class="container px-4">
-        <div class="row align-items-center gy-3">
-
-          <!-- LOGO TIPOGRÁFICO — Versión footer (sobre oscuro) -->
-          <div class="col-md-4 text-center text-md-start">
-            <div class="gm-logo gm-logo--light">
-              <span class="gm-logo__icon">
-                <i class="bi bi-cart-check-fill"></i>
-              </span>
-              <span class="gm-logo__text">
-                <span class="gm-logo__good">Good</span><span class="gm-logo__market">Market</span>
-              </span>
-            </div>
-          </div>
-
-          <div class="col-md-4 text-center">
-            <p class="footer-text mb-0">&copy; GoodMarket 2025. Todos los derechos reservados.</p>
-          </div>
-
-          <div class="col-md-4 text-center text-md-end">
-            <p class="footer-text mb-0">
-              Creado con ❤️ por <a href="https://isargenys.github.io/" target="_blank">
-                <span class="footer-author">Isargenys Contreras</span>
-              </a>
-            </p>
-          </div>
-
-        </div>
-      </div>
-    </footer>
-
-    <!-- ================================================
-         MODAL
-    ================================================ -->
-    <div class="modal fade" id="feedbackModal" tabindex="-1"
-         aria-labelledby="feedbackModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-
-          <div class="modal-header modal-header-gm border-0">
-            <h5 class="modal-title" id="feedbackModalLabel">
-              <i class="bi bi-chat-text-fill me-2" style="color:var(--wheat);"></i>
-              Envíanos tu mensaje
-            </h5>
-            <button type="button" class="btn-close btn-close-white"
-                    data-bs-dismiss="modal" aria-label="Cerrar"></button>
-          </div>
-
-          <div class="modal-body">
-            <form action="https://formsubmit.co/fcarvajal44@gmail.com" method="POST">
-              <div class="form-floating mb-3">
-                <input class="form-control" id="name" name="name" type="text"
-                       placeholder="Tu nombre..." required />
-                <label for="name">Nombre completo</label>
-              </div>
-              <div class="form-floating mb-3">
-                <input class="form-control" id="email" name="email" type="email"
-                       placeholder="name@example.com" required />
-                <label for="email">Correo electrónico</label>
-              </div>
-              <div class="form-floating mb-3">
-                <input class="form-control" id="phone" name="phone" type="tel"
-                       placeholder="(123) 456-7890" />
-                <label for="phone">Teléfono (opcional)</label>
-              </div>
-              <div class="form-floating mb-4">
-                <textarea class="form-control" id="message" name="message"
-                          placeholder="Escribe tu mensaje aquí..."
-                          style="height:9rem;" required></textarea>
-                <label for="message">Mensaje</label>
-              </div>
-              <input type="hidden" name="_next"    value="https://tusitio.com/gracias.html" />
-              <input type="hidden" name="_captcha" value="false" />
-              <div class="d-grid">
-                <button class="btn btn-submit" type="submit">
-                  <i class="bi bi-send-fill me-2"></i>Enviar mensaje
-                </button>
-              </div>
-            </form>
-          </div>
-
+            <footer class="quote-brand">GoodMarket 🌿</footer>
+          </blockquote>
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- ====== PREVIEW FEATURES ====== -->
+  <section class="features-section" aria-labelledby="preview-features-title">
+    <div class="container px-4">
+      <div class="text-center mb-5 fade-in-up">
+        <span class="section-label">Lo mejor de GoodMarket</span>
+        <h2 class="section-title mt-2" id="preview-features-title">¿Por qué elegir GoodMarket?</h2>
+        <p class="text-muted mt-3 mx-auto" style="max-width:500px;">
+          Todo lo que necesitas para comprar inteligente. <a href="caracteristicas.html" style="color:var(--forest); font-weight:700;">Ver todas las características →</a>
+        </p>
+      </div>
 
-    <script>
-      /* Navbar scroll */
-      const nav = document.getElementById('mainNav');
-      window.addEventListener('scroll', () => {
-        nav.classList.toggle('scrolled', window.scrollY > 50);
-      });
+      <div class="row gx-4 gy-4 justify-content-center">
+        <div class="col-md-6 col-lg-3 fade-in-up delay-1">
+          <article class="feature-card">
+            <div class="feature-icon-wrap"><i class="bi bi-list-check"></i></div>
+            <h3>Gestión de Listas</h3>
+            <p class="text-muted small mb-0">
+              Crea, edita y organiza listas de compras personalizadas.
+            </p>
+          </article>
+        </div>
+        <div class="col-md-6 col-lg-3 fade-in-up delay-2">
+          <article class="feature-card">
+            <div class="feature-icon-wrap"><i class="bi bi-search"></i></div>
+            <h3>Compara Precios</h3>
+            <p class="text-muted small mb-0">
+              Encuentra productos y compara precios entre supermercados.
+            </p>
+          </article>
+        </div>
+        <div class="col-md-6 col-lg-3 fade-in-up delay-3">
+          <article class="feature-card">
+                        <div class="feature-icon-wrap"><i class="bi bi-phone"></i></div>
+            <h3>Interfaz Intuitiva</h3>
+            <p class="text-muted small mb-0">
+              Diseño limpio con navegación fluida y funciones accesibles.
+            </p>
+          </article>
+        </div>
+        <div class="col-md-6 col-lg-3 fade-in-up delay-3">
+          <article class="feature-card">
+            <div class="feature-icon-wrap"><i class="bi bi-cart-check"></i></div>
+            <h3>Historial de Compras</h3>
+            <p class="text-muted small mb-0">
+              Registra tus compras y lleva un seguimiento de tus gastos.
+            </p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      /* Fade-in on scroll */
-      const observer = new IntersectionObserver(
-        (entries) => entries.forEach(e => {
-          if (e.isIntersecting) e.target.classList.add('visible');
-        }),
-        { threshold: 0.12 }
-      );
+  <!-- ====== CTA RÁPIDO ====== -->
+  <section class="cta-section" aria-labelledby="cta-home-title">
+    <div class="container px-4">
+      <div class="row gx-5 align-items-center">
 
-      document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+        <div class="col-lg-5 text-center mb-5 mb-lg-0 fade-in-up">
+          <img src="assets/6344.jpg" alt="Interfaz de descarga de GoodMarket mostrando precios comparados"
+               class="cta-phone-img" width="400" height="800" loading="lazy" />
+        </div>
 
-      /* Contador lista de espera — animación numérica */
-const countEl = document.getElementById('waitlistCount');
-if (countEl) {
-  const target  = 127;
-  const duration = 1800;
-  const step     = Math.ceil(duration / target);
-  let current    = 0;
+        <div class="col-lg-7 fade-in-up delay-2">
+          <span class="section-label section-label--dark">Disponible ahora</span>
+          <h2 class="cta-title mt-3 mb-3" id="cta-home-title">
+            ¡No esperes más!<br />
+            <span>Descarga la app</span>
+          </h2>
+          <p class="cta-subtitle">
+            Lleva el control de tus compras de manera fácil, rápida y totalmente
+            gratis. Disponible en Google Play.
+          </p>
+          <div class="app-badge-wrap">
+            <a href="https://play.google.com/store/apps/details?id=com.felixdev.goodmarketlist&hl=es_419"
+               target="_blank" rel="noopener noreferrer"
+               aria-label="Descargar GoodMarket en Google Play Store">
+              <img class="app-badge" src="assets/img/google-play-badge.svg"
+                   alt="Disponible en Google Play" width="180" height="52" loading="lazy" />
+            </a>
+            <a href="descarga.html" class="btn-unete" style="background:rgba(248,237,217,0.15); color:var(--alabaster) !important; box-shadow:none; border:1.5px solid rgba(248,237,217,0.3);">
+              Más información <i class="bi bi-arrow-right ms-2"></i>
+            </a>
+          </div>
+        </div>
 
-  const counter = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const timer = setInterval(() => {
-          current += 1;
-          countEl.textContent = current;
-          if (current >= target) clearInterval(timer);
-        }, step);
-        counter.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.5 });
+      </div>
+    </div>
+  </section>
 
-  counter.observe(countEl);
-}
-    </script>
+  <!-- ====== FOOTER ====== -->
+  <footer aria-label="Pie de página">
+    <div class="container px-4">
+      <div class="row gy-4">
 
-  </body>
+        <div class="col-lg-4 text-center text-lg-start">
+          <a class="gm-logo gm-logo--light" href="index.html" aria-label="GoodMarket - Inicio">
+            <span class="gm-logo__icon"><i class="bi bi-cart-check-fill"></i></span>
+            <span class="gm-logo__text">
+              <span class="gm-logo__good">Good</span><span class="gm-logo__market">Market</span>
+            </span>
+          </a>
+          <p class="footer-text mt-2">Organiza tus compras y cuida tu cartera.</p>
+        </div>
+
+        <div class="col-lg-4 text-center">
+          <p class="footer-text fw-bold mb-2" style="color:rgba(248,237,217,0.7);">Navegación</p>
+          <ul class="footer-links justify-content-center">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="caracteristicas.html">Características</a></li>
+            <li><a href="descarga.html">Descargar</a></li>
+            <li><a href="unete.html">Supermercados</a></li>
+            <li><a href="ios.html">iOS</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+          <p class="footer-text mb-0">&copy; GoodMarket 2025. Todos los derechos reservados.</p>
+        </div>
+
+        <div class="col-lg-4 text-center text-lg-end">
+          <p class="footer-text mb-0">
+            Creado con ❤️ por
+            <a href="https://isargenys.github.io/" target="_blank" rel="noopener noreferrer">
+              <span class="footer-author">Isargenys Contreras</span>
+            </a>
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- ====== JS ====== -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
 </html>
