@@ -3952,4 +3952,21 @@ footer {
     padding: 15px;
   }
 }
+.btn-nav-donate{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:.65rem 1.1rem;
+    border-radius:50px;
+    background:#ffb703;
+    color:#222;
+    font-weight:600;
+    text-decoration:none;
+    transition:.3s;
+}
 
+.btn-nav-donate:hover{
+    background:#fb8500;
+    color:#fff;
+    transform:translateY(-2px);
+}
